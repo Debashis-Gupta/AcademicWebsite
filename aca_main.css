@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.divider{
+    margin-top:20px ;
+    margin-bottom: 20px;
+}
+
+.heading_center{
+    text-align: center;
+    font-weight: bold;
+
+}
+.subheading_center{
+    text-align: left;
+    font-weight: 800;
+    text-decoration: underline;
+}
+.without_underline{
+    text-decoration: none;
+    color: gray;
+}
+.journal:hover{
+    color: blueviolet;
+}
+

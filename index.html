@@ -10,10 +10,15 @@
     <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
+<link rel="stylesheet" href="pro_css/reset.css">
     <!-- main css -->
     <link rel="stylesheet" href="aca_main.css">
+    <!-- fetch -->
+    <link rel="stylesheet" href="pro_css/all.min.css">
+    <link rel="stylesheet" href="pro_css/main.css">
+    <link rel="stylesheet" href="pro_css/work.css">
 
+   
 </head>
 <body>
     <!-- Navbar -->
@@ -59,10 +64,10 @@
               <div class="col-lg-6 col-md-5 col-sm-12">
                 <img class="fluid" style="height: 500px;" src="./pic2.jpg" alt="profile picture">
                 <ul class="list-inline" style="margin-top: 20px;">
-                    <li class="list-inline-item"><i class="fab fa-linkedin-in"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-github"></i></li>
-                    <li class="list-inline-item"><i class="far fa-envelope"></i></li>
-                    <li class="list-inline-item"></li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/debashis-gupta/" target="_blank"><i class="fab fa-linkedin-in"></i></a> </li>
+                    <li class="list-inline-item"><a href="https://github.com/Debashis-Gupta/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a></li>
+                    <li class="list-inline-item"><a href="mailto:debashisguptaruet@gmail.com"><i class="far fa-envelope"></i></a></li>
+                    <li class="list-inline-item"><a href="https://scholar.google.com/citations?user=T0EMKBoAAAAJ" target="_blank" rel="noopener noreferrer"><i class="fab fa-google"></i></a></li>
                   </ul>
               </div>
               <div class="col-lg-6 col-md-7 col-sm-12">
@@ -72,7 +77,7 @@
                   
                   My ethics of life are "Keep confidence in myself and only then with God, I can turn every impossible to be possible." and the second one "Ready to take any challenge no matter i win or loss it every challenge comes with a new lesson."
                   </p>
-                  <p>You can download my <strong><a href="https://drive.google.com/file/d/1EAsisLvghgHWVQx1UYkda51krDp2okfc/view?usp=sharing" target="_blank" rel="noopener noreferrer">CV here</a></strong></p>
+                  <p>You can download my <strong><a href="https://drive.google.com/file/d/1UagBu8Shb4xC6wYe1p-1oas1OPAQHCv9/view?usp=sharing" target="_blank" rel="noopener noreferrer">CV here</a></strong></p>
               
                 <div class="row">
                   <div class="col-lg-6 col-md-5 col-sm-12">
@@ -102,7 +107,7 @@
           
     </div>
     <!-- End Body -->
-
+<!-- publication -->
     <div class="container-fluid divider" style="background-color: azure;">
       <div id="publication" class="container">
         <h4 class="heading_center">Publications</h4>
@@ -118,12 +123,12 @@
           </li>
         </ol>
         <hr>
-        <li class="list-inline-item subheading_center"><i class="fas fa-book"></i> Conference</li>
+        <li class="list-inline-item subheading_center" ><i class="fas fa-book"></i> Conference</li>
         <ol>
           <li>1. Debashis Gupta, Biprodip Pal <i>“Vulnerability Analysis and Robust Training with
             Additive Noise for FGSM attack on Transfer Learning based Brain Tumor Detection
             from MRI”. “Data Engineering and Communication Technology.”</i>  Springer, 2021</li>
-            <li class="list-inline-item"><i class="far fa-hand-point-right"></i>
+            <li class="list-inline-item" style="margin-bottom: 17px;"><i class="far fa-hand-point-right"></i>
               <a href="#" class="without_underline journal">Click here to know more details</a>
             </li>
         </ol>
@@ -196,8 +201,8 @@
               <p style="text-align: right;">2016</p>
             </div>
           </div>
-          <li class="list-inline-item"><i class="far fa-hand-point-right"></i>
-            <a href="#" class="without_underline journal">Click here to see the creditionals</a>
+          <li class="list-inline-item" style="margin-bottom: 17px;"><i class="far fa-hand-point-right"></i>
+            <a href="https://drive.google.com/drive/folders/1pKiaugZvESOKILwumjBDrukFnT-7I83n?usp=sharing" target="_blank" class="without_underline journal">Click here to see the creditionals</a>
           </li>
 
 <!-- 
@@ -213,7 +218,695 @@
     </div>
 
 
+     <!-- start of projects -->
+  
+     <div class="container" >
+      <h4 class="heading_center">Projects</h4>
+      </div>
+    <section class="project-area" id="Projects">
+      <div class="container" id="blur">
+        <div class="button-group" >
+          <button type="button" class="active">All</button>
+          <button type="button" data-filter=".web">Web</button>
+          <button type="button" data-filter=".ML">Machine Learning</button>
+          <!-- <button type="button">Basic Algorithm</button> -->
+          <button type="button" data-filter=".SA">Security Attack</button>
+          <!-- <button type="button">Thesis</button> -->
+          <button type="button" data-filter=".PD">Project Demo</button>
+        </div>
 
+        <div class="row grid" >
+          <div class="col-lg-4 col-md-6 col-sm-12 element-item web PD">
+            <div class="our-project">
+              <div class="img">
+                <img src="pro_img/work/covid_tracker.jpeg" alt="portfolio-1" />
+              </div>
+              <div class="title py-4">
+                <h4 class="text-uppercase">
+                  Covid-19 Tracker With Global Map Comparision
+                </h4>
+                <span class="text-secondary"
+                  >Web Development
+                  <a
+                    style="color: blue; cursor: pointer;"
+                    onclick="covid_tracker()"
+                    >Description</a
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12 element-item web">
+            <div class="our-project">
+              <div class="img">
+                <img src="pro_img/work/blog.jpg" alt="portfolio-1" />
+              </div>
+              <div class="title py-4">
+                <h4 class="text-uppercase">Lets Learn Together</h4>
+                <span class="text-secondary"
+                  >Web Development
+                  <a style="color: blue; cursor: pointer;" onclick="blog()"
+                    >Description</a
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12 element-item web">
+            <div class="our-project">
+              <div class="img">
+                <img src="pro_img/work/teacher.jpg" alt="portfolio-2" />
+              </div>
+              <div class="title py-4">
+                <h4 class="text-uppercase">School Management</h4>
+                <span class="text-secondary"
+                  >Web Development
+                  <a style="color: blue; cursor: pointer;" onclick="school()"
+                    >Description</a
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12 element-item web PD">
+            <div class="our-project">
+              <div class="img">
+                <img src="pro_img/work/ecomerce.jpg" alt="portfolio-1" />
+              </div>
+              <div class="title py-4">
+                <h4 class="text-uppercase">Mina.com- A Ecomerce Site</h4>
+                <span class="text-secondary"
+                  >Web Development
+                  <a style="color: blue; cursor: pointer;" onclick="hotel()"
+                    >Description</a
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+         
+          <div class="col-lg-4 col-md-6 col-sm-12 element-item ML">
+            <div class="our-project">
+              <div class="img">
+                <img src="pro_img/work/covid.jpg" alt="portfolio-1" />
+              </div>
+              <div class="title py-4">
+                <h4 class="text-uppercase">
+                  Comparision on Classifing Covid-19 of Different Pretrained
+                  models
+                </h4>
+                <span class="text-secondary"
+                  >Machine Learning
+                  <a style="color: blue; cursor: pointer;" onclick="covid()"
+                    >Description</a
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12 element-item ML">
+            <div class="our-project">
+              <div class="img">
+                <img src="pro_img/work/chest.jpg" alt="portfolio-1" />
+              </div>
+              <div class="title py-4">
+                <h4 class="text-uppercase">Classifing Chest X-ray Image</h4>
+                <span class="text-secondary"
+                  >Machine Learning
+                  <a style="color: blue; cursor: pointer;" onclick="chest()"
+                    >Description</a
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+
+          
+
+          <div class="col-lg-4 col-md-6 col-sm-12 element-item ML">
+            <div class="our-project">
+              <div class="img">
+                <img src="pro_img/work/card.jpg" alt="portfolio-1" />
+              </div>
+              <div class="title py-4">
+                <h4 class="text-uppercase">Credit Card Fraud Detection</h4>
+                <span class="text-secondary"
+                  >Machine Learning
+                  <a style="color: blue; cursor: pointer;" onclick="card()"
+                    >Description</a
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-sm-12 element-item SA">
+            <div class="our-project">
+              <div class="img">
+                <img src="pro_img/work/dos.jpg" alt="portfolio-1" />
+              </div>
+              <div class="title py-4">
+                <h4 class="text-uppercase">Denial Of Service</h4>
+                <span class="text-secondary"
+                  >Security Attack
+                  <a style="color: blue; cursor: pointer;" onclick="dos()"
+                    >Description</a
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12 element-item SA">
+            <div class="our-project">
+              <div class="img">
+                <img src="pro_img/work/keylogger.jpg" alt="portfolio-1" />
+              </div>
+              <div class="title py-4">
+                <h4 class="text-uppercase">KeyLogger Attack</h4>
+                <span class="text-secondary"
+                  >Security Attack
+                  <a style="color: blue; cursor: pointer;" onclick="key()"
+                    >Description</a
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="covid_tracker">
+        <section class="pop scrollcss">
+          <div class="pop-header text-center">
+            <h2 class="timeline-header__title" style="color: black;">
+              COVID-19 Tracker
+            </h2>
+            <h3 class="timeline-header__subtitle" style="color: black;">
+              United We Can Face A Great Disaster With A Little Smile.
+            </h3>
+          </div>
+          <div class="pop-link">
+            <p>
+              Click on
+              <a
+                href="https://github.com/Debashis-Gupta/debashis-covid-19"
+                target="_blank"
+                >Github Link</a
+              >
+            </p>
+           
+          </div>
+          <div class="pop-body">
+            <p>
+              Covid-19 is the most fatal disease in 21<sup>st</sup> century
+              and is declared as <strong>Global pandemic by WHO</strong>. The
+              only cure of this deadly disease is to maintain social distance
+              and keeping hygenic environment.
+            </p>
+            <p>
+              I made this web app to track the covid-19 disease affected on
+              globally. Here i use Javascript to call api and processed the
+              data with fetch method. Here i introduced
+              <strong>some key features</strong> described briefly following.
+            </p>
+            <ul>
+              <li style="list-style: inside;">
+                <strong
+                  >Automatic detect one's country and show the result</strong
+                >. You can change it by clicking the change button. [ You can
+                use VPN to see the feature working. ]
+              </li>
+              <li style="list-style: inside;">
+                You can see the <strong>global map</strong> which states have
+                been how much affected with statistics.
+              </li>
+              <li style="list-style: inside;">
+                You can make
+                <strong>comparison between any two countries</strong> and see
+                the comparison statistics with chart.
+              </li>
+              <li style="list-style: inside;">
+                <strong>Stastical View</strong>
+              </li>
+              <li style="list-style: inside;">
+                Friendly <strong>User Interface</strong> (UI)
+              </li>
+            </ul>
+            <p>
+              Here I act as <strong> Project Planner </strong> and want to
+              <strong>contribute to the society.</strong>
+            </p>
+          </div>
+          <div class="pop-footer">
+            <button
+              class="btn btn-light fa-pull-right"
+              onclick="covid_tracker()"
+            >
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="blog">
+        <section class="pop scrollcss">
+          <div class="pop-header text-center">
+            <h2 class="timeline-header__title" style="color: black;">
+              Lets Learn Together
+            </h2>
+            <h3 class="timeline-header__subtitle" style="color: black;">
+              A Blog For Spreading Knowledge.
+            </h3>
+          </div>
+          <div class="pop-link">
+            <p>Click on <a href="#">Github Link</a></p>
+          </div>
+          <div class="pop-body">
+            <p>
+              Lets Learn Together is my personal blog where i try to share my
+              knowledge and experience to avid learners who want to do
+              something by themselves. As i'm very much keen to know new
+              technology and techniques i think about this blog to make usable
+              for all.
+            </p>
+            <p>
+              As it can be already identified i am
+              <strong>the owner and do all the stuffs by myself</strong> i
+              like to reveal some <strong>key features</strong> of the blog -
+            </p>
+            <ul>
+              <li style="list-style: inside;">
+                To make comment <strong>login</strong> must be needed
+              </li>
+              <li style="list-style: inside; font-weight: bold;">
+                Email Verification
+              </li>
+              <li style="list-style: inside;">
+                Users Can <strong>Subscribe to NewsLetter</strong> to notify
+                to the new posts
+              </li>
+              <li style="list-style: inside;">
+                Have all users details
+                <strong>secured and structured way</strong>
+              </li>
+              <li style="list-style: inside;">
+                <strong>Category</strong> to all posts
+              </li>
+            </ul>
+            <p>Here I act as <strong> Blogger, DBA and Planner</strong></p>
+          </div>
+          <div class="pop-footer">
+            <button class="btn btn-light fa-pull-right" onclick="blog()">
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="school">
+        <section class="pop scrollcss">
+          <div class="pop-header text-center">
+            <h2 class="timeline-header__title" style="color: black;">
+              BMMRI
+            </h2>
+            <h3 class="timeline-header__subtitle" style="color: black;">
+              Pursue Knowledge & Serve Mankind
+            </h3>
+          </div>
+          <div class="pop-link">
+            <p>
+              Click on
+              <a
+                href="https://github.com/Debashis-Gupta/school_management"
+                target="_blank"
+                >Github Link</a
+              >
+            </p>
+          </div>
+          <div class="pop-body">
+            <p>
+              Currently I am working on this project for a school. I like to
+              reveal some of its features like -
+            </p>
+            <ul>
+              <li style="list-style: inside;">Online Admission Portal</li>
+              <li style="list-style: inside;">
+                Managing Each Student Individual Data and Result
+              </li>
+              <li style="list-style: inside;">
+                Building Front-end Design for the school
+              </li>
+            </ul>
+            <p>
+              Here I work as
+              <strong>Team Leader Planner and Database Designer</strong>
+            </p>
+          </div>
+          <div class="pop-footer">
+            <button class="btn btn-light fa-pull-right" onclick="school()">
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="hotel">
+        <section class="pop scrollcss">
+          <div class="pop-header text-center">
+            <h2
+              class="timeline-header__title"
+              style="color: black; font-size: 40px;"
+            >
+              Mina.com- A Ecomerce Webstie
+            </h2>
+            <h3 class="timeline-header__subtitle" style="color: black;">
+              Online Platform Brings TO Life More Ease
+            </h3>
+          </div>
+          <div class="pop-link">
+            <p>
+              Click on
+              <a
+                href="https://github.com/Debashis-Gupta/Debashis-Gupta.github.io"
+                target="_blank"
+                >Github Link</a
+              >
+            </p>
+            <p>
+              Click on
+              <a href="https://debashis-gupta.github.io/" target="_blank"
+                >Project Demo</a
+              >
+            </p>
+          </div>
+          <div class="pop-body">
+            <p>
+              This is an ecomerce template which i built on my
+              <strong> first semester</strong>. It was my first project as a
+              front-end designer in my career.Here I use
+              <strong>only html css and Javascript.</strong>
+            </p>
+            <p>
+              I like to point out some <strong>features</strong> of this
+              project -
+            </p>
+            <ul>
+              <li style="list-style: inside;">
+                Provided <strong>Image Slider using Javascript</strong>
+              </li>
+              <li style="list-style: inside; font-weight: bold;">
+                Gallery View
+              </li>
+              <li style="list-style: inside; font-weight: bold;">
+                Custom Advertisement
+              </li>
+            </ul>
+            <p>
+              I keep this project as it is
+              <strong>without any improvisement</strong> because i like to
+              <strong>see my beginning over and over again</strong>. I hope
+              you like the <strong>demo</strong> and
+              <strong>see it as a new-bie web developer</strong>
+            </p>
+          </div>
+          <div class="pop-footer">
+            <button class="btn btn-light fa-pull-right" onclick="hotel()">
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="card">
+        <section class="pop scrollcss">
+          <div class="pop-header text-center">
+            <h2 class="timeline-header__title" style="color: black;">
+              Credit Card Fraud Detection
+            </h2>
+            <h3 class="timeline-header__subtitle" style="color: black;">
+              Technology Can Be Curse When It Is Being Abused
+            </h3>
+          </div>
+          <div class="pop-link">
+            <p>Click on <a href="https://github.com/Debashis-Gupta/-Credit_card_fraud_detection" target="__blank">Github Link</a></p>
+          </div>
+          <div class="pop-body">
+            <p>
+             It is important that credit card companies are able to recognize fraudulent credit card transactions so that customers are
+              not charged for items that they did not purchase.So I tried on credit card fraud detection dataset from kaggle to detect the
+              fraud cases. It is basically a categorical implementation to detect <strong>normal and fraud transactions.</strong>
+            </p>
+            <p>
+             Here I implemented three algorithms <strong>IsolationForest, LocalOutlierFactor, Randomforest and Artificial Neural Network (ANN).</strong>
+             The highlighted remarks of this project is -
+            </p>
+            <ul>
+              <li style="list-style: inside;">
+                <strong>Comparision</strong> between static algorithms and neural network architectural algorithms.
+              </li>
+              <li style="list-style: inside; font-weight: bold;">
+                ANN performs better than IsolationForest and Randomforest.
+              </li>
+              <li style="list-style: inside; font-weight: bold;">
+                Dataset Analysis
+              </li>
+            </ul>
+          </div>
+          <div class="pop-footer">
+            <button class="btn btn-light fa-pull-right" onclick="card()">
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="diabetic">
+        <section class="pop scrollcss">
+          <div class="pop-header text-center">
+            <h2 class="timeline-header__title" style="color: black;">
+              Diabetic Prediction
+            </h2>
+            <h3 class="timeline-header__subtitle" style="color: black;">
+              A Disease Can't Stop One's Life
+            </h3>
+          </div>
+          <div class="pop-link">
+            <p>Click on <a href="#">Github Link</a></p>
+          </div>
+          <div class="pop-body">
+            <p>
+              This was about classfication the given data whether the patient
+              has diabetic or not. Here I used
+              <strong>"PIMA Diabetic Dataset"</strong>.
+            </p>
+          </div>
+          <div class="pop-footer">
+            <button class="btn btn-light fa-pull-right" onclick="diabetic()">
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="covid">
+        <section class="pop scrollcss">
+          <div class="pop-header text-center">
+            <h2 class="timeline-header__title" style="color: black;">
+              Classifing Covid-19
+            </h2>
+            <h3 class="timeline-header__subtitle" style="color: black;">
+              Machine Can Enlarge A Doctor's Ability
+            </h3>
+          </div>
+          <div class="pop-link">
+            <p>Click on <a href="https://github.com/Debashis-Gupta/Debashis-Gupta-COMPARISION-ON-CLASSIFING-COVID-19-OF-DIFFERENT-PRETRAINED-MODELS/blob/master/identify-covid-19-with-inceptionv3-and-vgg16.ipynb" target="__blank">Github Link</a></p>
+          </div>
+          <div class="pop-body">
+            <p>
+              It's a <strong>binary classfication model</strong> defining
+              whether the given chest x-ray image is normal or affected by
+              <strong>Covid-19</strong>. Here I show different types of pretrained model like Vgg16, InceptionV3 , RestNet, DenseNet.
+            </p>
+            <p>Some <strong>key points</strong> of this model are -</p>
+            <ul>
+              <li style="list-style: inside; font-weight: bold;">
+                Can compare the stability among these models
+              </li>
+              <li style="list-style: inside; font-weight: bold;">
+                Dataset Analysis
+              </li>
+              <li style="list-style: inside;">
+                <strong>Provide Customization</strong> to these models
+              </li>
+
+            </ul>
+            <p>
+              Here I learn dealing with
+              <strong>less dataset and inner-differ architectural behaviour of different models</strong>.
+            </p>
+          </div>
+          <div class="pop-footer">
+            <button class="btn btn-light fa-pull-right" onclick="covid()">
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="chest">
+        <section class="pop scrollcss">
+          <div class="pop-header text-center">
+            <h2 class="timeline-header__title" style="color: black;">
+              Classifing Chest X-ray Image
+            </h2>
+            <h3 class="timeline-header__subtitle" style="color: black;">
+              Machine Can Enlarge A Doctor's Ability
+            </h3>
+          </div>
+          <div class="pop-link">
+            <p>Click on <a href="#">Github Link</a></p>
+          </div>
+          <div class="pop-body">
+            <p>
+              It's a <strong>binary classfication model</strong> defining
+              whether the given chest x-ray image is normal or affected by
+              <strong>Pneumonia</strong>. I use a pretrained model to train up
+              the whole image dataset.
+            </p>
+            <p>Some <strong>key points</strong> of this model are -</p>
+            <ul>
+              <li style="list-style: inside; font-weight: bold;">
+                Got accuracy - 96%
+              </li>
+              <li style="list-style: inside; font-weight: bold;">
+                Data Augmentation - Image generator
+              </li>
+              <li style="list-style: inside;">
+                <strong>Provide Customization</strong> Vgg16 model
+              </li>
+              <li style="list-style: inside; font-weight: bold;">
+                Normalization
+              </li>
+            </ul>
+            <p>
+              Here I learn dealing with
+              <strong>less dataset and image augementaion</strong>. Besides
+              how to <strong>customly define a pretrained model</strong>.
+            </p>
+          </div>
+          <div class="pop-footer">
+            <button class="btn btn-light fa-pull-right" onclick="chest()">
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="medical">
+        <section class="pop scrollcss">
+          <div class="pop-header text-center">
+            <h2 class="timeline-header__title" style="color: black;">
+              Adversarial Attack On Medical Image
+            </h2>
+            <h3 class="timeline-header__subtitle" style="color: black;">
+              Machine Can Enlarge A Doctor's Ability
+            </h3>
+          </div>
+          <div class="pop-link">
+            <p>Click on <a href="#">Github Link</a></p>
+          </div>
+          <div class="pop-body">
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
+              tempora quae eaque aliquam animi quam, doloribus voluptatibus
+              nesciunt? Optio, sint.
+            </p>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
+              tempora quae eaque aliquam animi quam, doloribus voluptatibus
+              nesciunt? Optio, sint.
+            </p>
+          </div>
+          <div class="pop-footer">
+            <button class="btn btn-light fa-pull-right" onclick="medical()">
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+     
+      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="dos">
+        <section class="pop scrollcss">
+          <div class="pop-header text-center">
+            <h2 class="timeline-header__title" style="color: black;">
+              Denial Of Service ATTACK
+            </h2>
+            <h3 class="timeline-header__subtitle" style="color: black;">
+              It's the man who can make use or abuse of internet
+            </h3>
+          </div>
+          <div class="pop-link">
+            <p>Click on <a href="#">Github Link</a></p>
+          </div>
+          <div class="pop-body">
+            <p>
+              As i am very much curious to learn and aware of network threats
+              and security, so i like coding new stuffs gaining knowledge from
+              different sources .I made this attack using python version 3.7.
+            </p>
+            <p>The key points i like to share of my project are -</p>
+            <ul>
+              <li style="list-style: inside;">
+                Custom input to the target server IP
+              </li>
+              <li style="list-style: inside;">
+                Customize the sending packets and timings
+              </li>
+            </ul>
+          </div>
+          <div class="pop-footer">
+            <button class="btn btn-light fa-pull-right" onclick="dos()">
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="key">
+        <section class="pop scrollcss">
+          <div class="pop-header text-center">
+            <h2 class="timeline-header__title" style="color: black;">
+              KEY LOGGER ATTACK
+            </h2>
+            <h3 class="timeline-header__subtitle" style="color: black;">
+              Machine Can Enlarge A Doctor's Ability
+            </h3>
+          </div>
+          <div class="pop-link">
+            <p>Click on <a href="https://github.com/Debashis-Gupta/NetWork_Security_Attack/tree/master/KeyLogger%20Attack">Github Link</a></p>
+          </div>
+          <div class="pop-body">
+            <p>
+              A keylogger, sometimes called a keystroke logger or system monitor, is a
+               of surveillance technology used to monitor and record each keystroke typed on a specific computer's keyboard.
+               Intruders use keyloggers to steal <strong>personal information</strong> such  which they can then sell or use for own profit.
+            </p>
+            <p>
+             I made this keylogger attack using python script.After running it , any keystroke can be traced by the script automatically.
+             The key features of it -
+            </p>
+            <ul>
+              <li style="list-style: inside; font-weight: bold;">
+                All keystrokes are traced and note down on a text file.
+              </li>
+              <li style="list-style: inside; font-weight: bold;">
+                This keylogger works behind the any app automatically.
+              </li>
+
+            </ul>
+          </div>
+          <div class="pop-footer">
+            <button class="btn btn-light fa-pull-right" onclick="key()">
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- end of projects -->
 
 
 
@@ -221,5 +914,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- FontAwesome JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</body>
+    <!-- this works -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<!-- project isotope -->
+<script src="vendor/isotope/istope.min.js" ></script>
+<script src="pro_js/project.js"></script>
+<script src="pro_js/custom_isotope.js"></script>
+  </body>
 </html>

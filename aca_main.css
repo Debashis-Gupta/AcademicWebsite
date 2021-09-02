@@ -105,4 +105,13 @@
         margin-top: 18px;
         padding-left: 10px;
       }
+      .slick-prev:before {
+        content: "";
+        
+      }
+      
+      .slick-next:before {
+        content: "";
+        
+      }
   }

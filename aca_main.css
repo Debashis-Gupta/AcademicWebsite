@@ -34,3 +34,14 @@
     font: normal 500 16px/130px var(--roboto);
     text-transform: uppercase;
 }
+
+.certification li > svg{
+    margin-right: 20px;
+}
+.certification li{
+
+    padding-bottom: 20px;
+}
+/* .certification li + li{
+    padding-bottom: 20px;
+} */

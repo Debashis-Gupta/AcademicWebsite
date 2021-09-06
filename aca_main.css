@@ -282,3 +282,18 @@
       border-right: hidden;
     }
   }
+
+  /* navbar social */
+  .social{
+    margin-top: 20px;
+    margin-left: 22%;
+  }
+
+  @media (max-width: 768px){
+   
+      .social{
+        margin-top: 20px;
+        margin-left: 0%;
+   
+    }
+  }

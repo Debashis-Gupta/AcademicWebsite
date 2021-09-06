@@ -19,12 +19,7 @@
     <link rel="stylesheet" href="pro_css/work.css">
 <!-- main css -->
 <link rel="stylesheet" href="aca_main.css">
-   <style>
-     .test{
-       overflow-y: scroll;
-       position: relative;
-     }
-   </style>
+  
 </head>
 <body>
     <!-- Navbar -->
@@ -124,8 +119,8 @@
             Mohammad Ali Moni. <i><a href="https://www.mdpi.com/2076-3417/11/9/4233" target="_blank" rel="noopener noreferrer">Vulnerability in deep transfer learning models to adversarial
               fast gradient sign attack for covid-19 prediction from chest radiography images</a></i>.
             Applied Sciences, 11(9), 2021 </li>
-            <li class="list-inline-item"><i class="far fa-hand-point-right"></i>
-            <a onclick="journal()" style="cursor: pointer;" class="without_underline journal">Click here to know more details</a>
+            <li style="margin-top: 5px; margin-bottom: 5px;" class="list-inline-item"><i class="far fa-hand-point-right"></i>
+            <a data-bs-toggle="modal" data-bs-target="#journal" style="cursor: pointer;" class="without_underline journal">Click to know the contribution shortly</a>
           </li>
         </ol>
         <hr>
@@ -134,14 +129,134 @@
           <li style="list-style-type: disc;"> Debashis Gupta, Biprodip Pal <i>“Vulnerability Analysis and Robust Training with
             Additive Noise for FGSM attack on Transfer Learning based Brain Tumor Detection
             from MRI”. “Data Engineering and Communication Technology.”</i>  Springer, 2021</li>
-            <li class="list-inline-item" style="margin-bottom: 17px;"><i class="far fa-hand-point-right"></i>
-              <a onclick="conf()" style="cursor: pointer;" class="without_underline journal">Click here to know more details</a>
+            <li style="margin-top: 5px; margin-bottom: 5px;" class="list-inline-item" style="margin-bottom: 17px;"><i class="far fa-hand-point-right"></i>
+              <a data-bs-toggle="modal" data-bs-target="#conf" style="cursor: pointer;" class="without_underline journal">Click to know the contribution shortly</a>
             </li>
         </ol>
 
       </div>
     </div>
-    <div class="popup2 overflow-auto fixed-top" id="journal">
+    
+    <!-- Modalm for journal -->
+    <div class="modal fade" id="journal" tabindex="-1" aria-labelledby="jouranlModal" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-md modal-sm">
+        <div class="modal-content">
+          
+          <!-- <div class="modal-header">
+            <h5 class="modal-title" id="jouranlModal">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div> -->
+          <div class="modal-body container-fluid">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <h5 class="text-center" style="margin-bottom: 10px;"><strong> <i> <u>Background</u> </i> </strong></h5>
+                <p class="text-lg-start text-sm-start text-md-start">
+                  This article is about how the well established 
+                  deep learning model used or assumed effective 
+                  in usage for medical science especially for diagnostic 
+                  purpose of several disease can be faced a great adverse 
+                  effect by small crafted noise called <i>perturbation</i>.
+                  This type of attack is widely known as an <strong><i>Adversarial Attack</i></strong>. 
+                </p>
+                <p>
+                  In this study, we investigated the effect of <i>First Gradient Sign
+                  Method (FGSM)</i>for radiography images such as 
+                  Chest X-Ray and CT scan of Covid-19 patient on widely known VGG16 
+                  and InceptionV3 models. Different ranged perturbations 
+                  -nonvisiable and close to visiable- from 0.0009 to 0.01 
+                  have been used to see how the models are vulnerable to this 
+                  attack.To a great extent these models on this dataset have 
+                  failed to prevent the attack and resulted in misclassification.
+                </p>
+              </div>
+              <!-- end of background -->
+              <hr>
+              <h5 class="text-center" style="margin-top: 5px;"><strong> <i> <u>Contribution</u> </i> </strong></h5>
+              <h6>1. <i> Effect of FGSM on Correct Classification</i></h6>
+              <div class="col-lg-5 col-md-12 col-sm-12 pub">
+                  <img src="./pro_img/publication/correct_classification.PNG" alt="" srcset="">
+              </div>
+              <div class="col-lg-7 col-md-12 col-sm-12 d-flex">
+                <p class="justify-content">
+                  Both models still can classify some images correctly under attack environment.
+                  However, the percentage of confidence reduced for both models. This is due to 
+                  the crafted noise endeavours to deviate the decision line to fool the model.
+                </p>
+
+              </div>
+
+              <h6 style="margin-top: 5px;">2. <i> Adversary Effect on Models' Accuracy</i></h6>
+              <div class="col-lg-5 col-md-12 col-sm-12 pub">
+                  <img src="./pro_img/publication/acciracy.PNG" alt="" srcset="">
+              </div>
+              <div class="col-lg-7 col-md-12 col-sm-12">
+                <p>
+                  FGSM attack outstrips VGG16 model which was failed
+                  completely to classifiy the labels. Although Inception-V3 model
+                  also showed a great drop in performance, it was better than Vgg16. 
+                </p>
+                <p>This implies no matter how simple or complexed model one is, it 
+                always has a question of utilization in crucial field like medicine.  
+                </p>
+
+              </div>
+
+              <h6 style="margin-top: 5px;">3. <i> Iteratic Perturbation Testing on Models</i></h6>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                  <p>
+                    The following architecture is used to test the models' robustness on iterative approach by updating each time 
+                    noise variation for every images. Until the model misclassify the input label for different crafted noise the attack 
+                    continues and stops either on a mislabel or last epsilon.
+                  </p>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12" >
+                <img src="./pro_img/publication/architecture.PNG" style="width: 100%; height: 100%;" alt="" srcset="">
+              </div>
+              <hr>
+            <h6>Github Code : <a href="https://github.com/Debashis-Gupta/vulnerablity_analysis_review_code" target="_blank" rel="noopener noreferrer">Link</a></h6>
+            <p>This is just partial code for review. To access the full code please <a href="mailto:debashisguptaruet@gmail.com">mail</a> us.</p>
+            </div>
+            <!-- End of Row -->
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal for Conference -->
+    <div class="modal fade" id="conf" tabindex="-1" aria-labelledby="confModal" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-md modal-sm">
+        <div class="modal-content">
+          
+         
+          <div class="modal-body container-fluid">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <h5 class="text-center" style="margin-bottom: 10px;"><strong> <i> <u>Background</u> </i> </strong></h5>
+               <p>This study shows the effect of <strong><i>Gaussian Noise</i></strong> on adversarial training. In this experiment,
+                we investigated that adding gaussian noise to the inner architecture of widely used deep learning model like ResNet50
+                can augment the performance of the model against different perturbation during FGSM attack. 
+              This approach much more important in medical science for clustering diseases effectively under adversary environment. 
+              </p>
+                <p>
+                  <span style="color: crimson;">This article is under printing</span>. 
+                  After that, a brief description will be updated soon. To know discuss more feel free to <a href="mailto:debashisguptaruet@gmail.com">mail</a> me.
+                </p>
+              </div>
+              <!-- end of background -->
+            </div>
+            <!-- End of Row -->
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="popup2 overflow-auto fixed-top" id="journal">
       <section class="pop3 ">
         <div class="row">
            <div class="col-lg-6 col-md-6 col-sm-12">
@@ -161,9 +276,9 @@
               Commodi doloribus magnam iusto voluptas sed nobis impedit voluptatum incidunt perferendis. Aut ea minus veniam eveniet omnis dolorum beatae, blanditiis sunt fuga magnam illo quas doloribus repellat aperiam et dolore.</p>
           </div>
         </div>
-      </section>
+      </section> -->
     
-      <div class="pop-footer" style="margin-top: 20px;">
+      <!-- <div class="pop-footer" style="margin-top: 20px;">
         <button class="btn btn-light fa-pull-right" onclick="journal()">
           Close
         </button>
@@ -178,8 +293,8 @@
         <button class="btn btn-light fa-pull-right" onclick="conf()">
           Close
         </button>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
     <!-- end of publication -->
 <!-- ##################  Experience Tab ########### -->
 
@@ -530,7 +645,7 @@
           </div>
         </section>
       </div>
-      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="blog">
+      <div class="col-lg-6 col-md-12 col-sm-12 popup fixed-top" id="blog">
         <section class="pop scrollcss">
           <div class="pop-header text-center">
             <h2 class="timeline-header__title" style="color: black;">
@@ -584,7 +699,7 @@
           </div>
         </section>
       </div>
-      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="school">
+      <div class="col-lg-6 col-md-12 col-sm-12 popup fixed-top" id="school">
         <section class="pop scrollcss">
           <div class="pop-header text-center">
             <h2 class="timeline-header__title" style="color: black;">
@@ -630,7 +745,7 @@
           </div>
         </section>
       </div>
-      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="hotel">
+      <div class="col-lg-6 col-md-12 col-sm-12 popup fixed-top" id="hotel">
         <section class="pop scrollcss">
           <div class="pop-header text-center">
             <h2
@@ -697,7 +812,7 @@
         </section>
       </div>
 
-      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="card">
+      <div class="col-lg-6 col-md-12 col-sm-12 popup fixed-top" id="card">
         <section class="pop scrollcss">
           <div class="pop-header text-center">
             <h2 class="timeline-header__title" style="color: black;">
@@ -740,7 +855,7 @@
         </section>
       </div>
 
-      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="diabetic">
+      <div class="col-lg-6 col-md-12 col-sm-12 popup fixed-top" id="diabetic">
         <section class="pop scrollcss">
           <div class="pop-header text-center">
             <h2 class="timeline-header__title" style="color: black;">
@@ -767,7 +882,7 @@
           </div>
         </section>
       </div>
-      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="covid">
+      <div class="col-lg-6 col-md-12 col-sm-12 popup fixed-top" id="covid">
         <section class="pop scrollcss">
           <div class="pop-header text-center">
             <h2 class="timeline-header__title" style="color: black;">
@@ -811,7 +926,7 @@
           </div>
         </section>
       </div>
-      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="chest">
+      <div class="col-lg-6 col-md-12 col-sm-12 popup fixed-top" id="chest">
         <section class="pop scrollcss">
           <div class="pop-header text-center">
             <h2 class="timeline-header__title" style="color: black;">
@@ -892,7 +1007,7 @@
         </section>
       </div> -->
      
-      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="dos">
+      <div class="col-lg-6 col-md-12 col-sm-12 popup fixed-top" id="dos">
         <section class="pop scrollcss">
           <div class="pop-header text-center">
             <h2 class="timeline-header__title" style="color: black;">
@@ -928,7 +1043,7 @@
           </div>
         </section>
       </div>
-      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="key">
+      <div class="col-lg-6 col-md-12 col-sm-12 popup fixed-top" id="key">
         <section class="pop scrollcss">
           <div class="pop-header text-center">
             <h2 class="timeline-header__title" style="color: black;">
@@ -1090,7 +1205,7 @@
             </div>
             <div class="details">
               <div class="content">
-                <h2>Shah Muhammad Hamdi<br>
+                <h2>Dr Shah Muhammad Hamdi<br>
                   <span>Assistant Professor</span> <br>
                   <span>Department of Computer Science</span><br>
                   <span>New Mexico State University</span>

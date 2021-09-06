@@ -19,7 +19,12 @@
     <link rel="stylesheet" href="pro_css/work.css">
 <!-- main css -->
 <link rel="stylesheet" href="aca_main.css">
-   
+   <style>
+     .test{
+       overflow-y: scroll;
+       position: relative;
+     }
+   </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -41,14 +46,14 @@
                 <a class="nav-link" href="#Experience">Experience</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#Projects">Projects</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="#Awards">Awards</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/contact.html">Contact</a>
+                <a class="nav-link" href="#Projects">Projects</a>
               </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="/contact.html">Contact</a>
+              </li> -->
               
             </ul>
             
@@ -120,7 +125,7 @@
               fast gradient sign attack for covid-19 prediction from chest radiography images</a></i>.
             Applied Sciences, 11(9), 2021 </li>
             <li class="list-inline-item"><i class="far fa-hand-point-right"></i>
-            <a href="#" class="without_underline journal">Click here to know more details</a>
+            <a onclick="journal()" style="cursor: pointer;" class="without_underline journal">Click here to know more details</a>
           </li>
         </ol>
         <hr>
@@ -130,12 +135,52 @@
             Additive Noise for FGSM attack on Transfer Learning based Brain Tumor Detection
             from MRI”. “Data Engineering and Communication Technology.”</i>  Springer, 2021</li>
             <li class="list-inline-item" style="margin-bottom: 17px;"><i class="far fa-hand-point-right"></i>
-              <a href="#" class="without_underline journal">Click here to know more details</a>
+              <a onclick="conf()" style="cursor: pointer;" class="without_underline journal">Click here to know more details</a>
             </li>
         </ol>
 
       </div>
     </div>
+    <div class="popup2 overflow-auto fixed-top" id="journal">
+      <section class="pop3 ">
+        <div class="row">
+           <div class="col-lg-6 col-md-6 col-sm-12">
+                    <h5>Interest</h5>
+                    <li>Generative Adversarial Network</li>
+                    <li>Adversarial Attack</li>
+                    <li>Optimization of Machine Learning Algorithm</li>
+                    <li>Cyber Security</li>
+                    <li>Data Mining</li>
+                    
+                  </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas corrupti aperiam est eos, pariatur voluptate dignissimos ullam aliquid obcaecati quam alias minus doloribus ipsum culpa, reiciendis veniam. Doloribus, necessitatibus repellendus.
+              Similique expedita saepe ducimus repellendus facilis quas praesentium labore a tempora eveniet, ex illum nam culpa cumque repellat obcaecati, atque hic voluptate vitae quaerat tempore nisi? Dolorum ullam natus fugiat?
+              Ullam dignissimos, aliquam tempore perferendis nemo, eveniet eum repellendus unde porro reprehenderit tempora facilis et placeat quisquam neque rem! Velit, delectus! Perspiciatis nemo, dolor fuga commodi eveniet expedita veritatis labore.
+              Ipsa cumque labore consectetur commodi rem? Earum ab mollitia esse est consequuntur a necessitatibus maiores minus corrupti eos, dolor deserunt amet aut quo error placeat. Cumque aliquid vitae itaque at.
+              Commodi doloribus magnam iusto voluptas sed nobis impedit voluptatum incidunt perferendis. Aut ea minus veniam eveniet omnis dolorum beatae, blanditiis sunt fuga magnam illo quas doloribus repellat aperiam et dolore.</p>
+          </div>
+        </div>
+      </section>
+    
+      <div class="pop-footer" style="margin-top: 20px;">
+        <button class="btn btn-light fa-pull-right" onclick="journal()">
+          Close
+        </button>
+      </div>
+    </div>
+    <div class="popup2 overflow-auto fixed-top" id="conf">
+      <section class="pop3 ">
+        <p style="color: red;"> This work is under publishing with due authority</p>
+      </section>
+    
+      <div class="pop-footer" style="margin-top: 20px;">
+        <button class="btn btn-light fa-pull-right" onclick="conf()">
+          Close
+        </button>
+      </div>
+    </div>
+    <!-- end of publication -->
 <!-- ##################  Experience Tab ########### -->
 
     <div class="container-fluid divider" style="background-color:azure ;">
@@ -218,8 +263,8 @@
       </div>
     </div>
 
-    <div class="popup2 " id="award">
-      <section class="pop2 mobileView slider2 ">
+    <div class="popup2 fixed-top" id="award">
+      <section class="pop2  mobileView slider2 ">
           <img src="pro_img/Achievements/Algo_Expert.png" alt="" srcset="" style=" height: 70vh;">
           <img src="pro_img/Achievements/Bug_catcher.png" alt="" srcset="" style=" height: 70vh;">
           <img src="pro_img/Achievements/practical_cryptography.PNG" alt="" srcset="" style=" height: 70vh;">
@@ -413,8 +458,8 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-md-12 col-sm-12 popup" id="covid_tracker">
-        <section class="pop scrollcss">
+      <div class="col-lg-6 col-md-12 col-sm-12 popup fixed-top" id="covid_tracker">
+        <section class="pop  scrollcss">
           <div class="pop-header text-center">
             <h2 class="timeline-header__title" style="color: black;">
               COVID-19 Tracker
@@ -929,7 +974,7 @@
 
 
     <!-- Online Certification -->
-    <div class="container_fluid divider" style="background-color: ghostwhite;" >
+    <div class="container_fluid divider " style="background-color: ghostwhite;" >
       <div class="container">
         <h4 class="heading_center">Certification</h4>
       
@@ -950,8 +995,8 @@
         </ol>
       </div>
     </div>
-    <div class="popup2 " id="dataScience">
-      <section class="pop2 mobileView slider2 ">
+    <div class="popup2 fixed-top" id="dataScience">
+      <section class="pop2 mobileView slider2  ">
           <img src="pro_img/oc/ibm.jpg" alt="" srcset="" style=" height: 70vh;">
           <img src="pro_img/oc/optimization.jpg" alt="" srcset="" style=" height: 70vh;">
           <img src="pro_img/oc/cnn.jpg" alt="" srcset="" style=" height: 70vh;">

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='Author' content='Kangning Cui'>
+    <meta name='Content' content='Homepage'>
+    <link rel="icon" href="myfigures/main/headshot.jpeg" type="image/x-icon">
+    <title>HomePage-Debashis</title>
+    <!-- Include a Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.5;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: #9E7E38;  /* Wake Forest Old Gold */
+            transition: color 0.3s;
+        }
+
+        a:hover,
+        a:active {
+            color: #7D632C;  /* 深一点的金色用于悬停效果 */
+            text-decoration: underline;
+        }
+
+        .record-link {
+            color: #9E7E38;  /* Wake Forest Old Gold */
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .record-link:hover {
+            color: #7D632C;  /* 深一点的金色用于悬停效果 */
+            text-decoration: underline;
+        }
+
+        .news-date {
+            color: #9E7E38;  /* Wake Forest Old Gold */
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .record-date {
+            color: #9E7E38;  /* Wake Forest Old Gold */
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .collaborator a:hover {
+            color: #7D632C;  /* 深一点的金色用于悬停效果 */
+            text-decoration: none;
+        }
+
+        .scroll-btn {
+            background: #9E7E38;  /* Wake Forest Old Gold */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .scroll-btn:hover {
+            background: #7D632C;  /* 深一点的金色用于悬停效果 */
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        #sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 300px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.08);
+            padding: 30px 20px;
+            box-sizing: border-box;
+            border-right: 1px solid rgba(158, 126, 56, 0.1);
+        }
+
+        #profile-picture {
+            text-align: center;
+            padding-bottom: 25px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(158, 126, 56, 0.15);
+        }
+
+        #profile-picture img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 3px solid #9E7E38;
+            transition: transform 0.3s ease;
+        }
+
+        #profile-picture img:hover {
+            transform: scale(1.05);
+        }
+
+        #toc {
+            padding-top: 10px;
+        }
+
+        #toc strong {
+            font-size: 16px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 18px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #toc ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #toc li {
+            margin-bottom: 8px;
+        }
+
+        #toc li a {
+            padding: 12px 15px;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: #555;
+            font-size: 0.95em;
+            border-left: 3px solid transparent;
+            background-color: rgba(158, 126, 56, 0.05);
+        }
+
+        #toc li a:hover {
+            background-color: rgba(158, 126, 56, 0.15);
+            border-left-color: #9E7E38;
+            color: #9E7E38;
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(158, 126, 56, 0.2);
+        }
+
+        #toc li a:active {
+            background-color: rgba(158, 126, 56, 0.2);
+        }
+
+        .content {
+            margin-left: 300px; /* Adjusted to match other pages */
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .content-top {
+            margin-bottom: 20px;
+        }
+
+        .icon-link {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .icon-link img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .contact-info b {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        #name {
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: 700;
+            padding: 15px 0;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        #name span {
+            display: block;
+        }
+        
+        .contact-information {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(158, 126, 56, 0.15);
+        }
+
+        .contact-information p {
+            margin: 6px 0;
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.6;
+        }
+        .publication-entry {
+            display: flex;
+            gap: 20px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+    
+        .publication-entry:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .publication-figure {
+            flex: 0 0 150px;
+            display: flex;
+            align-items: center;
+        }
+    
+        .publication-figure img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+    
+        .publication-figure img:hover {
+            transform: scale(1.05);
+        }
+    
+        .publication-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .publication-text p.title {
+            font-size: 1em;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .publication-text p.title .paper-title {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .publication-text p.title .venue {
+            white-space: nowrap;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .publication-text p.authors {
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            color: #666;
+            margin-top: 0;
+        }
+        
+        .publication-text p.authors .main-author {
+            color: #000;
+            font-weight: normal;
+        }
+        
+        .publication-text .badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .conference-text p.title {
+            font-size: 1em;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .conference-text p.title .paper-title {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .conference-text p.title .venue {
+            white-space: nowrap;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .conference-text p.authors {
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            color: #666;
+            margin-top: 0;
+        }
+        
+        .conference-text p.authors .main-author {
+            color: #000;
+            font-weight: normal;
+        }
+        
+        .conference-text .badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .publications-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .publications-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        .close {
+            position: absolute;
+            right: 35px;
+            top: 15px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .conference-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .conference-entry {
+            display: flex;
+            gap: 20px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .conference-entry:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .publication-entry.highlight-entry,
+        .conference-entry.highlight-entry {
+            background: linear-gradient(135deg, rgba(158, 126, 56, 0.18), rgba(248, 243, 231, 0.95));
+            border: 1px solid rgba(158, 126, 56, 0.45);
+            box-shadow: 0 3px 10px rgba(158, 126, 56, 0.25);
+        }
+
+        .publication-entry.highlight-entry:hover,
+        .conference-entry.highlight-entry:hover {
+            box-shadow: 0 6px 16px rgba(158, 126, 56, 0.35);
+        }
+ 
+        .conference-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .conference-text .title {
+            font-size: 1em;
+            margin-bottom: 2px;
+        }
+
+        .conference-text .authors {
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .conference-text .authors .main-author {
+            color: #000;
+            font-weight: normal;
+        }
+
+        .conference-text .venue {
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .conference-text .badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background: #9E7E38;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .mobile-menu-btn:hover {
+            background: #7D632C;
+        }
+
+        /* Responsive Design for Mobile */
+        @media screen and (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            #sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+                width: 280px;
+            }
+
+            #sidebar.active {
+                transform: translateX(0);
+            }
+
+            .content, .content-top {
+                margin-left: 0;
+                padding: 10px;
+                margin-top: 60px;
+            }
+
+            #profile-picture img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+            #name {
+                font-size: 1.2em;
+            }
+
+            h1, h2 {
+                font-size: 20px;
+            }
+
+            .publication-entry, .conference-entry {
+                flex-direction: column;
+            }
+
+            .publication-figure {
+                flex: 0 0 auto;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .publication-figure img {
+                width: 100%;
+                display: block;
+            }
+
+            .publication-text, .conference-text {
+                width: 100%;
+            }
+
+            .badges {
+                flex-wrap: wrap;
+            }
+
+            .badges img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="mobile-menu-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div id="sidebar">
+        <div id="profile-picture">
+            <img src="myfigures/main/headshot.jpeg" alt="Debashis Gupta">
+        </div>
+        <div id="name">Debashis Gupta</div>
+    
+        <!-- Contact information -->
+        <div class="contact-information">
+            <p><i>Research Assistant</i></p>
+            <p><i>Department of Computer Science</i></p>
+            <p><i>Wake Forest University</i></p>
+        </div>
+
+        <div id="toc">
+            <strong>Contents:</strong>
+            <ul>
+                <li><a href="index.html">Main Page</a></li>
+                <li><a href="publications.html">Research Publications</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+                <li><a href="academic_honors.html">Academic Service & Honors</a></li>
+                <li><a href="teach.html">Teaching Experience</a></li>
+                <!-- <li><a href="others.html">Visits and Gallery</a></li> -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="content content-top">
+        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 30px; border-left: 4px solid #9E7E38;">
+            <p style="margin: 0; font-size: 1.1em; line-height: 1.6;">
+                <strong>Complete Publication List:</strong> For my full publication record, please visit my 
+                <a href="https://scholar.google.com/citations?user=T0EMKBoAAAAJ&hl=en" target="_blank" style="color: #9E7E38; text-decoration: none; font-weight: bold;">Google Scholar profile</a>.
+                <br><br>
+                <strong>Featured Work:</strong> Selected publications of my work in machine learning, computer vision, with applications in sustainability and healthcare. Entries with the highlighted background mark my representative works.
+            </p>
+        </div>
+        
+        <h2 id="journal-publications">JOURNAL PUBLICATIONS</h2>
+        <div class="publications-grid">
+
+            <!-- Publication Entry -->
+            <div class="publication-entry highlight-entry">
+                <div class="publication-figure">
+                    <img src="myfigures/publication_figure/OtoSTVT.png" 
+                         alt="Figure for Cui et al., 2025" 
+                         onclick="openModal(this.src)"
+                         title="Click to enlarge">
+                </div>
+                <div class="publication-text">
+                    <p class="title">
+                        <span class="paper-title"><strong>"OtoSTVT: A Diagnostic-Driven Frame Selection Method for Otoscopy Videos Using Spatio-Temporal Transformers"</strong></span>
+                        <span class="venue"><i>Under Review, Biomedical Signal Processing and Control Jounral.</i> 2025</span>
+                    </p>
+                    <p class="authors">
+                        <span class="main-author">Debashis Gupta</span><sup>†,◊</sup>, Seda Camalen<sup>†</sup>, Hao Lu<sup>‡</sup>, Sean Catley, Aaron Moberly, Metin Nafi Gurcan
+                    </p>
+                    <div class="badges">
+                        <!-- <a href="https://ieeexplore.ieee.org/document/11059236"><img src="https://img.shields.io/static/v1?label=Trans&message=Geosci.+Remote+Sens.&color=%2300629B&logo=IEEE"></a> -->
+                        <a href="https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=5605762"><img src="https://img.shields.io/static/v1?label=SSRN&message=Preprint&color=%23b31b1b&logo=arxiv"></a>
+                        <!-- <a href="https://zenodo.org/records/13822508"><img src="https://img.shields.io/badge/Ecuador-Palm_Detection_Dataset-orange?logo=zenodo"></a> -->
+                        <!-- <a href="https://github.com/ckn3/palm-ds-sp"><img src="https://img.shields.io/static/v1?label=ckn3&message=palm-ds-sp&color=blue&logo=github"></a>
+                        <a href="https://github.com/ckn3/palm-ds-sp"><img src="https://img.shields.io/github/stars/ckn3/palm-ds-sp?style=social"></a>
+                        <a href="https://github.com/ckn3/palm-ds-sp"><img src="https://img.shields.io/github/forks/ckn3/palm-ds-sp?style=social"></a> -->
+                    </div>
+                </div>
+            </div>        
+            <!-- Publication Entry -->
+            <div class="publication-entry highlight-entry">
+                <div class="publication-figure ">
+                    <img src="myfigures/publication_figure/vulnerabilties.png" 
+                         alt="Figure for Camalan et al., 2022" 
+                         onclick="openModal(this.src)"
+                         title="Click to enlarge">
+                </div>
+                <div class="publication-text">
+                    <p class="title">
+                        <span class="paper-title"><strong>"Vulnerability in deep transfer learning models to adversarial fast gradient sign attack for covid-19 prediction from chest radiography images"</strong></span>
+                        <span class="venue"><i>Applied Science</i>, 2021</span>
+                    </p>
+                    <p class="authors">
+                        <span class="main-author">Debashis Gupta</span><sup>†</sup>, Biprodip Pal<sup>†</sup>, Md Rashed-Al-Mahfuz, Salem A Alyami, Mohammad Ali Moni<sup>‡</sup>
+                    </p>
+                    <div class="badges">
+                        <a href="https://www.mdpi.com/2076-3417/11/9/4233"><img src="https://img.shields.io/static/v1?label=MDPI&message=AppliedScience.&color=%233f7d3b"></a>
+                        <a href="https://github.com/Debashis-Gupta/vulnerablity_analysis_review_code"><img src="https://img.shields.io/static/v1?label=Debashis&message=Vulnerable&color=blue&logo=github" alt="Github-Vulnerabilities"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 将模态框移到页面最外层 -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <div class="content">
+        <h2 id="conference-publications">CONFERENCE PUBLICATIONS AND WORKSHOP</h2>
+        <div class="conference-grid">
+            <div class="conference-entry highlight-entry">
+                <div class="publication-figure">
+                    <img src="myfigures/publication_figure/TraceBack_final.png" 
+                         alt="Figure for Debashis et al., 2025" 
+                         onclick="openModal(this.src)"
+                         title="Click to enlarge">
+                    </div>
+                <div class="conference-text">
+                    <p class="title">
+                        <span class="paper-title"><strong>"Interpretable Failure Analysis in Multi-Agent Reinforcement Learning Systems"</strong></span>
+                        <span class="venue">in <i>Proc AAMAS</i>, 2026</span>
+                    </p>
+                    <p class="authors">
+                        <span class="main-author">Debashis Gupta</span><sup>†</sup>, Risal S. Shefin <sup>†</sup> Thai Le, Sarra Alqahtani<sup>‡</sup>
+                    </p>
+                    <div class="badges">
+                        <a href="#"><img src="https://img.shields.io/static/v1?label=AAMAS&message=AAMAS+'26&color=%2300629B&logo=AAMAS" alt="AAMAS - AAMAS'25"></a>
+                        <!-- <a href="#"><img src="https://img.shields.io/static/v1?label=ArXiv&message=Preprint&color=%23b31b1b&logo=arxiv" alt="ArXiv - Preprint"></a> -->
+                        <!-- <a href="docs/posters/cui2025ijcai.pdf"><img src="https://img.shields.io/static/v1?label=Poster&message=View&color=%236A1B9A" alt="Poster"></a> -->
+                        <!-- <a href="docs/slides/cui2025ijcai.pdf"><img src="https://img.shields.io/static/v1?label=Slides&message=View&color=%23008B8B" alt="Slides"></a>
+                        <a href="https://github.com/Zippppo/PRISM"><img src="https://img.shields.io/static/v1?label=Zippppo&message=PRISM&color=blue&logo=github" alt="Zippppo - PRISM"></a>
+                        <a href="https://github.com/Zippppo/PRISM"><img src="https://img.shields.io/github/stars/Zippppo/PRISM?style=social" alt="stars - PRISM"></a>
+                        <a href="https://github.com/Zippppo/PRISM"><img src="https://img.shields.io/github/forks/Zippppo/PRISM?style=social" alt="forks - PRISM"></a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NeurIPS Publication  -->
+        <div class="conference-grid">
+            <div class="conference-entry highlight-entry">
+                <div class="publication-figure">
+                    <img src="myfigures/publication_figure/strpo.png" 
+                         alt="Figure for Debashis et al., 2025" 
+                         onclick="openModal(this.src)"
+                         title="Click to enlarge">
+                    </div>
+                <div class="conference-text">
+                    <p class="title">
+                        <span class="paper-title"><strong>"Safe, Trust Region Policy Optimization for Constrained Reinforcement Learning"</strong></span>
+                        <span class="venue">in <i>Proc NeurIPS (ARLET)</i>, 2025</span>
+                    </p>
+                    <p class="authors">
+                        Md Asifur Rahman, Risal Shahriar Shefin, <span class="main-author">Debashis Gupta</span>, Sarra Alqahtani<sup>‡</sup>
+                    </p>
+                    <div class="badges">
+                        <a href="https://openreview.net/pdf?id=CZ7NIFcVEO"><img src="https://img.shields.io/static/v1?label=NeurIPS&message=ARLET+'25&color=%2300629B&logo=ARLET" alt="NeurIPS - ARLET'25"></a>
+                        <!-- <a href="#"><img src="https://img.shields.io/static/v1?label=ArXiv&message=Preprint&color=%23b31b1b&logo=arxiv" alt="ArXiv - Preprint"></a>
+                        <a href="docs/posters/cui2025ijcai.pdf"><img src="https://img.shields.io/static/v1?label=Poster&message=View&color=%236A1B9A" alt="Poster"></a>
+                        <a href="docs/slides/cui2025ijcai.pdf"><img src="https://img.shields.io/static/v1?label=Slides&message=View&color=%23008B8B" alt="Slides"></a>
+                        <a href="https://github.com/Zippppo/PRISM"><img src="https://img.shields.io/static/v1?label=Zippppo&message=PRISM&color=blue&logo=github" alt="Zippppo - PRISM"></a>
+                        <a href="https://github.com/Zippppo/PRISM"><img src="https://img.shields.io/github/stars/Zippppo/PRISM?style=social" alt="stars - PRISM"></a>
+                        <a href="https://github.com/Zippppo/PRISM"><img src="https://img.shields.io/github/forks/Zippppo/PRISM?style=social" alt="forks - PRISM"></a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== 2024 ===================== -->
+
+        <div class="conference-grid">
+            <div class="conference-entry highlight-entry">
+                <div class="publication-figure">
+                    <img src="myfigures/publication_figure/security.png"
+                        alt="Figure for Gupta et al., 2024"
+                        onclick="openModal(this.src)"
+                        title="Click to enlarge">
+                </div>
+                <div class="conference-text">
+                    <p class="title">
+                        <span class="paper-title"><strong>"Security Threats on Data-Driven Approaches for Luggage Screening"</strong></span>
+                        <span class="venue">in <i>IEEE Computing and Communication Workshop and Conference (CCWC)</i>, 2024</span>
+                    </p>
+                    <p class="authors">
+                        <span class="main-author">Debashis Gupta</span><sup>†‡</sup>, Aditi Golder, K. D. Gupta, D. Dasgupta, R. George, K. Shujaee
+                    </p>
+                    <div class="badges">
+                        <a href="https://ieeexplore.ieee.org/document/10427869"><img src="https://img.shields.io/static/v1?label=IEEE&message=CCWC+'24&color=%2300629B&logo=CCWC" alt="CCWC - CCWC'24"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== 2023 ===================== -->
+
+        <div class="conference-grid">
+            <div class="conference-entry highlight-entry">
+                <div class="publication-figure">
+                    <img src="myfigures/publication_figure/cervix.png"
+                        alt="Figure for Gupta et al., 2023"
+                        onclick="openModal(this.src)"
+                        title="Click to enlarge"
+                        style="max-height: 120px; object-fit: contain; background-color: white;">
+                </div>
+                <div class="conference-text">
+                    <p class="title">
+                        <span class="paper-title"><strong>"CervixMed: Detecting Cervical Cancer Based on Combinational Data Using Hybrid Architecture"</strong></span>
+                        <span class="venue">in <i>International Conference on Digital Image Computing: Techniques and Applications</i>, 2023</span>
+                    </p>
+                    <p class="authors">
+                        <span class="main-author">Debashis Gupta</span><sup>†‡</sup>, Aditi Golder,M. M. Haque, M. A. Moni
+                    </p>
+                    <div class="badges">
+                        <a href="https://ieeexplore.ieee.org/abstract/document/10410973"><img src="https://img.shields.io/static/v1?label=IEEE&message=DICTA+'23&color=%2300629B&logo=DICTA" alt="DICTA - DICTA'23"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- <div class="conference-grid">
+                <div class="conference-entry">
+                    <div class="publication-figure">
+                        <img src="#"
+                            alt="Figure for Gupta et al., 2023"
+                            onclick="openModal(this.src)"
+                            title="Click to enlarge">
+                    </div>
+                    <div class="conference-text">
+                        <p class="title">
+                            <span class="paper-title"><strong>"Automated Railway Crossing System: A Secure and Resilient Approach"</strong></span>
+                            <span class="venue">in <i>IEEE Ubiquitous Computing, Electronics & Mobile Communication Conference</i>, 2023</span>
+                        </p>
+                        <p class="authors">
+                            Aditi Golder, <span class="main-author">Debashis Gupta</span>, S. Roy, M. A. Al Ahasan, M. A. Haque
+                        </p>
+                        <div class="badges">
+                            <a href="#"><img src="#" alt="IEEE UEMCON"></a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        <!-- ===================== 2021–2022 ===================== -->
+        <div class="conference-grid">
+            <div class="conference-entry highlight-entry">
+                <div class="publication-figure">
+                    <img src="myfigures/publication_figure/bim.png"
+                        alt="Figure for Gupta et al., 2021"
+                        onclick="openModal(this.src)"
+                        title="Click to enlarge">
+                </div>
+                <div class="conference-text">
+                    <p class="title">
+                        <span class="paper-title"><strong>"Classification of Tumor Cell Using a Naive Convolutional Neural Network Model"</strong></span>
+                        <span class="venue">in <i>International Conference on Machine Intelligence and Emerging Technologies</i>, 2022</span>
+                    </p>
+                    <p class="authors">
+                        <span class="main-author">Debashis Gupta</span><sup>†‡</sup>, Syed Rahat Hassan, Renu Gupta, Urmi Saha, Mohammed Sowket Ali
+                    </p>
+                    <div class="badges">
+                        <a href="https://link.springer.com/chapter/10.1007/978-3-031-34619-4_14"><img src="https://img.shields.io/static/v1?label=Springer&message=MIET+'22&color=%2300629B&logo=MIET" alt="MIET - MIET'22" alt="Conference"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="conference-grid">
+            <div class="conference-entry highlight-entry">
+                <div class="publication-figure">
+                    <img src="myfigures/publication_figure/bim.png"
+                        alt="Figure for Gupta et al., 2021"
+                        onclick="openModal(this.src)"
+                        title="Click to enlarge">
+                </div>
+                <div class="conference-text">
+                    <p class="title">
+                        <span class="paper-title"><strong>"Vulnerability Analysis and Robust Training with Additive Noise for FGSM Attack on Transfer Learning-Based Brain Tumor Detection"</strong></span>
+                        <span class="venue">in <i>International Conference on Big Data, IoT, and Machine Learning</i>, 2021</span>
+                    </p>
+                    <p class="authors">
+                        <span class="main-author">Debashis Gupta</span><sup>†‡</sup>, B. Pal
+                    </p>
+                    <div class="badges">
+                        <a href="https://d1wqtxts1xzle7.cloudfront.net/83696299/2022_Book_ProceedingsOfTheInternationalC-libre.pdf?1649608228=&response-content-disposition=inline%3B+filename%3DBook_ProceedingsOfTheInternationalC.pdf&Expires=1767284750&Signature=Lt1Uoil-oXpRs-KwUfb-0arh5MHpgBb83ePDEiAlxYPCx6ZV-tJz~p98aJ~7I27D0e0ijwVonRyKVcgh~MIe7pOEQorPoAhcbsnMTQmZYCJ1tRl3odPQmcoti23kDsjQyFdQggxRYY3LtF4DUg1SzjetC1tFWXT2tztgqXtdclCDfPFvw-uF5VPHQjIMuCiJQ1bDLnZnftFYWeH2EAZjlegRDUFAbX8JCOtPUkOqOQsaYCY9j3Gnyzl2VeSgdsXrcZl7AREc1bL0GR~gdrsaSqf4--VxYaaQAoT63MYRxJZ7pRQo0-T-QAjg~Mk0051oivpwXdEUJuhWQQCfCaqSjA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA#page=121"><img src="https://img.shields.io/static/v1?label=Springer&message=BIM+'21&color=%2300629B&logo=BIM" alt="BIM - BIM'21" alt="Conference"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of section -->
+        <p>
+            <sup>†</sup> indicates the first authorship, 
+            <sup>‡</sup> indicates the correspondence, 
+            <sup>◊</sup> indicates work during internship.
+        </p>
+    </div>
+     
+    <!-- Add JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById("modal");
+            var modalImg = document.getElementById("modal-img");
+            var span = document.getElementsByClassName("close")[0];
+
+            window.openModal = function(imgSrc) {
+                modal.style.display = "block";
+                modalImg.src = imgSrc;
+            }
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === "Escape") {
+                    modal.style.display = "none";
+                }
+            });
+        });
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

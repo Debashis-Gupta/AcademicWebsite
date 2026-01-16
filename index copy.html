@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='author' content='Debashis Gupta'>
+    <meta name='description' content='Homepage'>
+    <link rel="icon" href="myfigures/main/headshot.jpeg" type="image/x-icon">
+    <title>HomePage-Debashis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.5;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: #9E7E38;  /* Wake Forest Old Gold */
+            transition: color 0.3s;
+        }
+
+        a:hover,
+        a:active {
+            color: #7D632C;  /* 深一点的金色用于悬停效果 */
+            text-decoration: underline;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        #sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 300px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.08);
+            padding: 30px 20px;
+            box-sizing: border-box;
+            border-right: 1px solid rgba(158, 126, 56, 0.1);
+        }
+
+        #profile-picture {
+            text-align: center;
+            padding-bottom: 25px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(158, 126, 56, 0.15);
+        }
+
+        #profile-picture img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 3px solid #9E7E38;
+            transition: transform 0.3s ease;
+        }
+
+        #profile-picture img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Styling for the search bar and buttons */
+        #search-box {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #search-box input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 4px; /* Spacing between the input and the buttons */
+        }
+
+        /* Updated styles for button row to accommodate changes */
+        .button-row {
+            display: flex;
+        }
+        
+        .button-row input[type="submit"],
+        .button-row button {
+            flex-grow: 1;  /* This makes each button grow to fill the container */
+            padding: 8px;
+            margin: 0 4px; /* This sets the margin between the buttons; adjust as needed */
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        /* This targets the first and last buttons to remove the margin at the ends */
+        .button-row input[type="submit"]:first-child,
+        .button-row button:first-child {
+            margin-left: 0;
+        }
+        
+        .button-row button:last-child {
+            margin-right: 0;
+        }
+        
+        #toc {
+            padding-top: 10px;
+        }
+
+        #toc strong {
+            font-size: 16px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 18px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #toc ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #toc li {
+            margin-bottom: 8px;
+        }
+
+        #toc li a {
+            padding: 12px 15px;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: #555;
+            font-size: 0.95em;
+            border-left: 3px solid transparent;
+            background-color: rgba(158, 126, 56, 0.05);
+        }
+
+        #toc li a:hover {
+            background-color: rgba(158, 126, 56, 0.15);
+            border-left-color: #9E7E38;
+            color: #9E7E38;
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(158, 126, 56, 0.2);
+        }
+
+        #toc li a:active {
+            background-color: rgba(158, 126, 56, 0.2);
+        }
+
+        /* Content Styles */
+        .content, .content-top {
+            margin-left: 300px;
+            padding: 15px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .content:last-child, .content-top:last-child {
+            margin-bottom: 0; /* Remove margin for the last content block */
+        }
+
+        .icon-link {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .icon-link img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .contact-info b {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        #name {
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: 700;
+            padding: 15px 0;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        #name span {
+            display: block;
+        }
+
+        .contact-information {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(158, 126, 56, 0.15);
+        }
+
+        .contact-information p {
+            margin: 6px 0;
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.6;
+        }
+        .record-container {
+            display: flex;
+            gap: 15px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            align-items: center;
+        }
+        
+        .record-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .record-text {
+            flex: 1;
+            order: 2;
+        }
+        
+        .record-text p {
+            margin: 0;
+        }
+        
+        .record-text b {
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        .record-text i {
+            color: #666;
+        }
+        
+        .record-text div {
+            margin-top: 5px;
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .record-image {
+            flex: 0 0 100px;
+            order: 1;
+        }
+        
+        .record-image img {
+            width: 100px;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        
+        .record-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        .record-date {
+            color: #9E7E38;  /* Wake Forest Old Gold */
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+        
+        .record-link {
+            color: #9E7E38;  /* Wake Forest Old Gold */
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .record-link:hover {
+            color: #7D632C;  /* 深一点的金色用于悬停效果 */
+            text-decoration: underline;
+        }
+        
+        /* Collaborators Grid */
+        .collaborators {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 15px;
+        }
+        
+        .collaborator {
+            background: #fff;
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+        
+        .collaborator:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .collaborator img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 5px;
+            transition: transform 0.2s;
+        }
+        
+        .collaborator img:hover {
+            transform: scale(1.05);
+        }
+        
+        .collaborator .name {
+            color: #333;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: block;
+        }
+        
+        .collaborator .name span {
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .collaborator a:hover {
+            color: #7D632C;  /* 深一点的金色用于悬停效果 */
+            text-decoration: none;
+        }
+        
+        .imaging-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .imaging-group img {
+            width: 40%; /* Adjust based on your preference */
+            height: auto; /* Maintain aspect ratio */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional shadow for styling */
+        }
+
+        .news-container {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .news-slider {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+            max-height: 400px;
+            scroll-behavior: smooth;
+            padding: 8px 5px;
+            scrollbar-width: thin;
+            scrollbar-color: #007BFF #f0f0f0;
+        }
+
+        .news-slider::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .news-slider::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+
+        .news-slider::-webkit-scrollbar-thumb {
+            background: #007BFF;
+            border-radius: 3px;
+        }
+
+        .news-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .news-date {
+            color: #9E7E38;  /* Wake Forest Old Gold */
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .news-content {
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+
+        .news-content i {
+            color: #666;
+        }
+
+        .scroll-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .scroll-btn {
+            background: #9E7E38;  /* Wake Forest Old Gold */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .scroll-btn:hover {
+            background: #7D632C;  /* 深一点的金色用于悬停效果 */
+        }
+
+        .collaborators-wrapper {
+            max-height: 480px; /* 约显示三行，每行160px */
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #007BFF #f0f0f0;
+            scroll-behavior: smooth;
+        }
+
+        .collaborators-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .collaborators-wrapper::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+
+        .collaborators-wrapper::-webkit-scrollbar-thumb {
+            background: #007BFF;
+            border-radius: 3px;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background: #9E7E38;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .mobile-menu-btn:hover {
+            background: #7D632C;
+        }
+
+        /* Responsive Design for Mobile */
+        @media screen and (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            #sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+                width: 280px;
+            }
+
+            #sidebar.active {
+                transform: translateX(0);
+            }
+
+            .content, .content-top {
+                margin-left: 0;
+                padding: 10px;
+                margin-top: 60px;
+            }
+
+            #profile-picture img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+            #name {
+                font-size: 1.2em;
+            }
+
+            h1, h2 {
+                font-size: 20px;
+            }
+
+            .record-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .record-text {
+                order: 2;
+            }
+
+            .record-image {
+                flex: 0 0 auto;
+                margin-bottom: 10px;
+                margin-top: 0;
+                order: 1;
+            }
+
+            .record-image img {
+                width: 150px;
+            }
+
+            .collaborators {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .collaborator img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .news-card {
+                flex: 0 0 280px;
+            }
+
+            .visitor-stats {
+                flex-direction: column;
+                width: 100% !important;
+            }
+
+            .imaging-group {
+                flex-direction: column;
+            }
+
+            .imaging-group img {
+                width: 100%;
+            }
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.0.0/fetch.min.js"></script>
+</head>
+
+
+<body>
+
+    <button class="mobile-menu-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div id="sidebar">
+        <div id="profile-picture">
+            <img src="myfigures/main/headshot.jpeg" alt="Debashis Gupta">
+        </div>
+        <div id="name">Debashis Gupta</div>
+    
+        <!-- Contact information -->
+        <div class="contact-information">
+            <p><i>Research Assistant</i></p>
+            <p><i>Department of Computer Science</i></p>
+            <p><i>Wake Forest University</i></p>
+        </div>
+        
+        <div id="toc">
+            <strong>Contents:</strong>
+            <ul>
+                <li><a href="index.html">Main Page</a></li>
+                <li><a href="publications.html">Research Publications</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+                <li><a href="academic_honors.html">Academic Service & Honors</a></li>
+                <li><a href="teach.html">Teaching Experience</a></li>
+                <li><a href="others.html">Visits and Gallery</a></li>
+            </ul>
+        </div>
+        
+        <hr>
+    </div>
+
+    <div class="content content-top">
+
+        <h2 id="welcome">Welcome to Kangning's Homepage!</h2>
+
+        <div>
+            <!-- <a href="https://cs.wfu.edu/faculty/jason-cui/"><img src="https://img.shields.io/badge/WFU_Site-9D7A3F" alt="WFU Site"></a> -->
+            <a href="mailto:debashisguptaruet@gmail.com"><img src="https://img.shields.io/badge/debashisgupta-inactive?logo=gmail" alt="Contact - Me"></a>
+            <a href="https://github.com/Debashis-GUpta/"><img src="https://img.shields.io/badge/Github-black?logo=github" alt="Github"></a>
+            <a href="https://www.linkedin.com/in/debashis-gupta/"><img src="https://img.shields.io/badge/LinkedIn-blue?logo=linkedin" alt="LinkedIn"></a>
+            <a href="https://scholar.google.com/citations?user=T0EMKBoAAAAJ&hl=en"><img src="https://img.shields.io/badge/Google_Scholar-168_Citations-blue?logo=google+scholar" alt="Google Scholar" id="scholar-citations-badge"></a>
+            <a href="mydocs/KR_Debashis_Gupta.pdf" target="_blank"><img src="https://img.shields.io/badge/CV-PDF-red?logo=adobe" alt="CV"></a>
+            <!-- <a href="https://orcid.org/0000-0002-1856-5064"><img src="https://img.shields.io/badge/ORCID-A6CE39?logo=orcid&logoColor=white" alt="ORCID"></a> -->
+            <!-- <a href="https://www.scopus.com/authid/detail.uri?authorId=57226829865"><img src="https://img.shields.io/badge/Scopus-E9711C?logo=elsevier&logoColor=white" alt="Scopus"></a> -->
+        </div>
+        
+        <h2 id="positions">POSITIONS HELD</h2>
+
+        <div class="record-container">
+            <div class="record-text">
+                <div class="record-date">[08/2024-08/2025]</div>
+                <b>Wake Forest University</b>
+                <div><i>Research Assistant, IRSC Lab, Department of Computer Science</i></div>
+                <div><i>Advisor : Dr. V.Paul Pauca</i></div>
+            </div>
+            <div class="record-image">
+                <img src="myfigures/main/wfu.jpg" alt="Wake Forest University">
+            </div>
+        </div>
+        
+        <div class="record-container">
+            <div class="record-text">
+                <div class="record-date">[05/2024-07/2024]</div>
+                <b>Wake Forest University School of Medicine</b>
+                <div><i>Machine Engineer Intern, Center for Artificial Intelligence Research (CAIR)</i></div>
+                <div><i>Advisors: Dr. Metin Nafi Gurcan (Director,CAIR) & Dr. Seda Camalen (Research Fellow, Mayo Clinic Rochester)</i></div>
+            </div>
+            <div class="record-image">
+                <img src="myfigures/main/wfu_medical.jpg" alt="Wake Forest University School of Medicine">
+            </div>
+        </div>
+
+        <div class="record-container">
+            <div class="record-text">
+                <div class="record-date">[08/2023-05/2024]</div>
+                <b>Wake Forest University</b>
+                <div><i>Teaching Assistant, Department of Computer Science</i></div>
+                <div><i>CSC 101 : Problem Solving with Python & CSC 111 : Introduction to Computer Science</i></div>
+            </div>
+            <div class="record-image">
+                <img src="myfigures/main/wfu.jpg" alt="Wake Forest University">
+            </div>
+        </div>
+
+        
+       <div class="record-container">
+            <div class="record-text">
+                <div class="record-date">[11/2021-12/2022]</div>
+                <b>Bangladesh Army University of Science and Technology (BAUST)</b>
+                <div><i>Lecturer, Department of Computer Science</i></div>
+                <div><i>CSC 101 : Problem Solving with Python & CSC 111 : Introduction to Computer Science</i></div>
+            </div>
+            <div class="record-image">
+                <img src="myfigures/main/baust.jpeg" alt="Bangladesh Army University of Science and Technology (BAUST)">
+            </div>
+        </div>
+
+        <h2 id="education">EDUCATION</h2>
+        <div class="record-container">
+            <div class="record-text">
+                <div class="record-date">[09/2021-07/2025]</div>
+                <b>M.Sc in Computer Science</b>
+                <div><i>Wake Forest University</i></div>
+                <div>Research focuses on Knowledge Graph, Large Language Model, Multimodal Learning, Satellite Imagery.</div>
+            </div>
+            <div class="record-image">
+                <img src="myfigures/main/wfu.jpg" alt="M.Sc in Computer Science">
+            </div>
+        </div>
+
+        <div class="record-container">
+            <div class="record-text">
+                <div class="record-date">[09/2021-07/2025]</div>
+                <b>B.Sc in Computer Science & Engineering</b>
+                <div><i>Rajshai University of Engineering & Technology (RUET)</i></div>
+                <div>Research focuses on vulnerability analysis of SOTA models against adversarial attack for medical imaging.</div>
+            </div>
+            <div class="record-image">
+                <img src="myfigures/main/ruet.png" alt="B.Sc in Computer Science">
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="content">
+        <h2 id="news">RECENT NEWS</h2>
+        <div class="news-container">
+            <div class="news-slider">
+
+                <div class="news-card">
+                    <div class="news-date">[12/2025]</div>
+                    <div class="news-content">
+                        The paper "Interpretable Failure Analysis in Multi-Agent Reinforcement Learning Systems" was accepted by <i>AAMAS 2026.</i>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">[09/2025]</div>
+                    <div class="news-content">
+                        The paper "Safe, Trust Region Policy Optimization for Constrained Reinforcement Learning" was accepted by <i>NeurIPS (Workshop) 2025</i>.
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">[03/2025]</div>
+                    <div class="news-content">
+                        Selected for Travel Award Grant for Oral Presentation in <i>PAKDD 2025</i>.
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">[02/2025]</div>
+                    <div class="news-content">
+                        The paper "Scalable Knowledge Graph Construction from Unstructured Text: A Case Study on Artisanal and Small-Scale Gold Mining" was accepted by <i>PAKDD 2025</i>.
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-date">[06/2025]</div>
+                    <div class="news-content">
+                        The paper "Toward Efficient UAV-Based Small Object Detection: A Lightweight Network with Enhanced Feature Fusion" was accepted by <i>Remote Sens.</i>.
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-date">[02/2025]</div>
+                    <div class="news-content">
+                        Awarded <i>Upsilon Pi Epsilon</i> for academic excellence.
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-date">[05/2024]</div>
+                    <div class="news-content">
+                        Awarded <i>Richter Scholarship</i> for acknowledging as individual potential researcher.
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div class="scroll-buttons">
+                <button class="scroll-btn" onclick="scrollNews('left')">←</button>
+                <button class="scroll-btn" onclick="scrollNews('right')">→</button>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="content" style="position: relative;">
+        <h2>SITE VISITORS</h2>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; pointer-events: all;"></div>
+        
+        <div class="visitor-stats" style="display: flex; align-items: center; justify-content: center; gap: 20px; margin: 20px auto; width: 45%;">
+            <div class="map" style="flex: 3;">
+                <img src='//clustrmaps.com/map_v2.png?cl=080808&w=500&t=tt&d=yiMtVnrUIAvh3nYVrE_SkK3vszNweQ0FORJPzigR9mU&co=ffffff&ct=808080' style="width: 100%; height: auto;" alt="Visitor Map"/>
+            </div>
+            <div class="globe" style="flex: 1;">
+                <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=yiMtVnrUIAvh3nYVrE_SkK3vszNweQ0FORJPzigR9mU"></script>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This script block will handle searching and highlighting text within the current page.
+        var highlightIndex = -1;
+        var highlights = [];
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            var searchForm = document.getElementById('searchForm');
+            if (searchForm) {
+                searchForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent the form from submitting the traditional way
+                    performSearch(); // Call the performSearch function
+                });
+            }
+        });
+    
+        function performSearch() {
+            // Clear previous highlights
+            clearHighlights();
+        
+            var searchText = document.getElementById('searchInput').value;
+            if (!searchText) {
+                return; // Exit if search box is empty
+            }
+        
+            // Select all content blocks
+            var contentBlocks = document.querySelectorAll('.content');
+        
+            // Initialize a flag to check if matches are found
+            var foundMatches = false;
+        
+            // Iterate over each content block and perform the search
+            contentBlocks.forEach(function(contentDiv) {
+                var content = contentDiv.innerHTML;
+                var searchRegEx = new RegExp(searchText, "gi");
+                var matches = content.match(searchRegEx);
+        
+                if (matches && matches.length > 0) {
+                    // Replace the found text with highlighted text
+                    contentDiv.innerHTML = content.replace(searchRegEx, '<mark class="highlight">$&</mark>');
+                    foundMatches = true;
+                }
+            });
+        
+            // If matches are found, store all highlights and highlight the first match
+            if (foundMatches) {
+                highlights = document.querySelectorAll('.highlight');
+                highlightNext(); // Automatically highlight the first match
+            } else {
+                alert('Search term not found.');
+            }
+        }
+    
+        function clearHighlights() {
+            // Query all highlighted elements within any .content block and clear them
+            document.querySelectorAll('.content .highlight').forEach(function(highlighted) {
+                // Replace the highlighted element with its innerHTML
+                var parent = highlighted.parentNode;
+                parent.replaceChild(document.createTextNode(highlighted.textContent), highlighted);
+            });
+        
+            // Clear the highlights array and reset the current highlight index
+            highlights = [];
+            highlightIndex = -1;
+        
+            // Clear the search input box
+            document.getElementById('searchInput').value = '';
+        }
+    
+        function highlightNext() {
+            if (highlights.length > 0) {
+                highlightIndex = (highlightIndex + 1) % highlights.length;
+                scrollHighlightIntoView();
+            }
+        }
+    
+        function highlightPrevious() {
+            if (highlights.length > 0) {
+                highlightIndex = (highlightIndex - 1 + highlights.length) % highlights.length;
+                scrollHighlightIntoView();
+            }
+        }
+    
+        function scrollHighlightIntoView() {
+            // Remove current highlight if any
+            document.querySelectorAll('.current-highlight').forEach(function(highlighted) {
+                highlighted.classList.remove('current-highlight');
+            });
+            // Add new highlight and scroll into view
+            highlights[highlightIndex].classList.add('current-highlight');
+            highlights[highlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function scrollNews(direction) {
+            const slider = document.querySelector('.news-slider');
+            const cardHeight = 150; // approximate card height + gap
+            const scrollAmount = direction === 'left' ? -cardHeight : cardHeight;
+            slider.scrollBy({
+                top: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
+    
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+        .current-highlight {
+            background-color: orange; /* Different color for the current highlight */
+        }
+
+    </style>
+
+    <!-- updates -->
+
+</body>
+</html>

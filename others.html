@@ -1,0 +1,803 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='Author' content='Kangning Cui'>
+    <meta name='Content' content='Homepage'>
+    <link rel="icon" href="figures/main/profile.jpeg" type="image/x-icon">
+    <title>Home Page for Jason Kangning Cui</title>
+    <!-- Include a Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.5;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: #9E7E38;  /* Wake Forest Old Gold */
+            transition: color 0.3s;
+        }
+
+        a:hover,
+        a:active {
+            color: #7D632C;  /* 深一点的金色用于悬停效果 */
+            text-decoration: underline;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        #sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 300px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.08);
+            padding: 30px 20px;
+            box-sizing: border-box;
+            border-right: 1px solid rgba(158, 126, 56, 0.1);
+        }
+
+        #profile-picture {
+            text-align: center;
+            padding-bottom: 25px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(158, 126, 56, 0.15);
+        }
+
+        #profile-picture img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 3px solid #9E7E38;
+            transition: transform 0.3s ease;
+        }
+
+        #profile-picture img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Styling for the search bar and buttons */
+        #search-box {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #search-box input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 4px; /* Spacing between the input and the buttons */
+        }
+
+        /* Updated styles for button row to accommodate changes */
+        .button-row {
+            display: flex;
+        }
+        
+        .button-row input[type="submit"],
+        .button-row button {
+            flex-grow: 1;  /* This makes each button grow to fill the container */
+            padding: 8px;
+            margin: 0 4px; /* This sets the margin between the buttons; adjust as needed */
+            border: none;
+            border-radius: 4px;
+            background-color: #9E7E38;  /* Wake Forest Old Gold */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        /* This targets the first and last buttons to remove the margin at the ends */
+        .button-row input[type="submit"]:first-child,
+        .button-row button:first-child {
+            margin-left: 0;
+        }
+        
+        .button-row button:last-child {
+            margin-right: 0;
+        }
+        
+        #toc {
+            padding-top: 10px;
+        }
+
+        #toc strong {
+            font-size: 16px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 18px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #toc ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #toc li {
+            margin-bottom: 8px;
+        }
+
+        #toc li a {
+            padding: 12px 15px;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: #555;
+            font-size: 0.95em;
+            border-left: 3px solid transparent;
+            background-color: rgba(158, 126, 56, 0.05);
+        }
+
+        #toc li a:hover {
+            background-color: rgba(158, 126, 56, 0.15);
+            border-left-color: #9E7E38;
+            color: #9E7E38;
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(158, 126, 56, 0.2);
+        }
+
+        #toc li a:active {
+            background-color: rgba(158, 126, 56, 0.2);
+        }
+
+        .content {
+            margin-left: 300px; /* Adjusted to match other pages */
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .content-top {
+            margin-bottom: 20px;
+        }
+
+        .icon-link {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .icon-link img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .contact-info b {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        #name {
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: 700;
+            padding: 15px 0;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        #name span {
+            display: block;
+        }
+
+        .contact-information {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(158, 126, 56, 0.15);
+        }
+
+        .contact-information p {
+            margin: 6px 0;
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .visit-entry {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .visit-image {
+            margin: 10px 0;
+        }
+        
+        .visit-image img {
+            width: 200px; /* 设置缩略图大小 */
+            height: auto;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .visit-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            color: #f1f1f1;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .visits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .visit-entry {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .visit-entry:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .visit-image {
+            position: relative;
+            width: 100%;
+            padding-top: 66.67%; /* 3:2 aspect ratio */
+            overflow: hidden;
+        }
+
+        .visit-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .visit-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .visit-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .visit-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .visit-description {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        /* 调整内容区域的样式 */
+        .content {
+            margin-left: 300px;
+            padding: 20px;
+            background-color: #f3f4f6;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background: #9E7E38;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .mobile-menu-btn:hover {
+            background: #7D632C;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            #sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+                width: 280px;
+            }
+
+            #sidebar.active {
+                transform: translateX(0);
+            }
+
+            .content {
+                margin-left: 0;
+                padding: 10px;
+                margin-top: 60px;
+            }
+
+            #profile-picture img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+            #name {
+                font-size: 1.2em;
+            }
+
+            h1, h2 {
+                font-size: 20px;
+            }
+
+            .visits-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .visit-entry {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="mobile-menu-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div id="sidebar">
+        <div id="profile-picture">
+            <img src="figures/main/profile.jpeg" alt="Kangning Cui">
+        </div>
+        <div id = 'name'>Kangning Cui (Jason)</div>
+        <div class="contact-information">
+            <p><i>Research Assistant Professor</i></p>
+            <p><i>Department of Computer Science</i></p>
+            <p><i>Wake Forest University</i></p>
+        </div>
+
+        <div id="toc">
+            <strong>Contents:</strong>
+            <ul>
+                <li><a href="index.html">Main Page</a></li>
+                <li><a href="publications.html">Research Publications</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+                <li><a href="academic_honors.html">Academic Service & Honors</a></li>
+                <li><a href="teach.html">Teaching Experience</a></li>
+                <li><a href="others.html">Visits and Gallery</a></li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <div class="content content-top">
+        <h2 id="additional">VISITS AND EXCHANGES</h2>
+        <div class="visits-grid">
+            <div class="visit-entry">
+                <div class="visit-image">
+                    <img src="figures/visits/oxford.JPG" 
+                         alt="University of Oxford" 
+                         onclick="openModal(this)"
+                         title="Click to enlarge">
+                </div>
+                <div class="visit-content">
+                    <div class="visit-title">University of Oxford</div>
+                    <div class="visit-description">
+                        Visiting DPhil student, Oxfordshire, England, United Kingdom
+                        <br>September 2024 - March 2025
+                    </div>
+                </div>
+            </div>
+
+            <div class="visit-entry">
+                <div class="visit-image">
+                    <img src="figures/visits/WakeForest2023.jpg" 
+                         alt="Wake Forest University Research" 
+                         onclick="openModal(this)"
+                         title="Click to enlarge">
+                </div>
+                <div class="visit-content">
+                    <div class="visit-title">Wake Forest University</div>
+                    <div class="visit-description">
+                        Research scholar, Winston-Salem, North Carolina, United States
+                        <br>Summer 2023
+                    </div>
+                </div>
+            </div>
+
+            <div class="visit-entry">
+                <div class="visit-image">
+                    <img src="https://www.mat.uniroma2.it/~tvmsscho/Rome-Moscow_School/tv-lm-sunshine.png" 
+                         alt="Rome-Moscow School 2020"
+                         onclick="openModal(this)"
+                         title="Click to enlarge"
+                         onerror="this.style.display='none'"
+                    >
+                </div>
+                <div class="visit-content">
+                    <div class="visit-title">Rome-Moscow School</div>
+                    <div class="visit-description">
+                        Student, Remote mode
+                        <br>Summer 2020
+                    </div>
+                </div>
+            </div>
+
+            <div class="visit-entry">
+                <div class="visit-image">
+                    <img src="figures/visits/Delft2020.jpg" 
+                         alt="Delft University of Technology Exchange" 
+                         onclick="openModal(this)"
+                         title="Click to enlarge">
+                </div>
+                <div class="visit-content">
+                    <div class="visit-title">Delft University of Technology</div>
+                    <div class="visit-description">
+                        Exchange student, Delft, Netherlands
+                        <br>Spring term 2020
+                    </div>
+                </div>
+            </div>
+
+            <div class="visit-entry">
+                <div class="visit-image">
+                    <img src="figures/visits/Beijing2019.jpg" 
+                         alt="Peking University Exchange" 
+                         onclick="openModal(this)"
+                         title="Click to enlarge">
+                </div>
+                <div class="visit-content">
+                    <div class="visit-title">Peking University</div>
+                    <div class="visit-description">
+                        Exchange student, Beijing, China
+                        <br>Summer 2019
+                    </div>
+                </div>
+            </div>
+
+            <div class="visit-entry">
+                <div class="visit-image">
+                    <img src="figures/visits/London2018.JPG" 
+                         alt="Middlesex University Exchange" 
+                         onclick="openModal(this)"
+                         title="Click to enlarge">
+                </div>
+                <div class="visit-content">
+                    <div class="visit-title">Middlesex University</div>
+                    <div class="visit-description">
+                        Exchange student, London, England, United Kingdom
+                        <br>Summer 2018
+                    </div>
+                </div>
+            </div>
+
+            <div class="visit-entry">
+                <div class="visit-image">
+                    <img src="figures/visits/Beijing2018.jpg" 
+                         alt="Tsinghua University Visit" 
+                         onclick="openModal(this)"
+                         title="Click to enlarge">
+                </div>
+                <div class="visit-content">
+                    <div class="visit-title">Tsinghua University</div>
+                    <div class="visit-description">
+                        Visiting student, Beijing, China
+                        <br>Summer 2018 and Summer 2019
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 id="gallery">GALLERY</h2>
+        <div class="visits-grid">
+            <div class="visit-entry">
+                <div class="visit-image">
+                    <img src="figures/others/clement-5yr.jpg"
+                         alt="Clement, 5 years old" 
+                         onclick="openModal(this)"
+                         title="Click to enlarge">
+                </div>
+                <div class="visit-content">
+                    <div class="visit-title">Clement</div>
+                    <div class="visit-description">
+                        Seeing me off at the airport
+                        <br>August 2025
+                    </div>
+                </div>
+            </div>
+
+            <div class="visit-entry">
+                <div class="visit-image">
+                    <img src="figures/others/clement-4yr.JPG"
+                         alt="Clement, 4 years old, July 2024" 
+                         onclick="openModal(this)"
+                         title="Click to enlarge">
+                </div>
+                <div class="visit-content">
+                    <div class="visit-title">Clement</div>
+                    <div class="visit-description">
+                        Wearing a watermelon hat
+                        <br>July 2024
+                    </div>
+                </div>
+            </div>
+
+            <div class="visit-entry">
+                <div class="visit-image">
+                    <img src="figures/others/clement-3yr.jpg"
+                         alt="Clement, 3 years old, Nov 2023" 
+                         onclick="openModal(this)"
+                         title="Click to enlarge">
+                </div>
+                <div class="visit-content">
+                    <div class="visit-title">Clement</div>
+                    <div class="visit-description">
+                        Yawning
+                        <br>November 2023
+                    </div>
+                </div>
+            </div>
+
+            <div class="visit-entry">
+                <div class="visit-image">
+                    <img src="figures/others/clement-3mo.JPG"
+                         alt="Clement, 3 months, Oct 2020" 
+                         onclick="openModal(this)"
+                         title="Click to enlarge">
+                </div>
+                <div class="visit-content">
+                    <div class="visit-title">Clement (3 months old)</div>
+                    <div class="visit-description">
+                        Lying on the sofa
+                        <br>October 2020
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <script>
+        // This script block will handle searching and highlighting text within the current page.
+        var highlightIndex = -1;
+        var highlights = [];
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            var searchForm = document.getElementById('searchForm');
+            if (searchForm) {
+                searchForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent the form from submitting the traditional way
+                    performSearch(); // Call the performSearch function
+                });
+            }
+        });
+    
+        function performSearch() {
+            // Clear previous highlights
+            clearHighlights();
+        
+            var searchText = document.getElementById('searchInput').value;
+            if (!searchText) {
+                return; // Exit if search box is empty
+            }
+        
+            // Select all content blocks
+            var contentBlocks = document.querySelectorAll('.content');
+        
+            // Initialize a flag to check if matches are found
+            var foundMatches = false;
+        
+            // Iterate over each content block and perform the search
+            contentBlocks.forEach(function(contentDiv) {
+                var content = contentDiv.innerHTML;
+                var searchRegEx = new RegExp(searchText, "gi");
+                var matches = content.match(searchRegEx);
+        
+                if (matches && matches.length > 0) {
+                    // Replace the found text with highlighted text
+                    contentDiv.innerHTML = content.replace(searchRegEx, '<mark class="highlight">$&</mark>');
+                    foundMatches = true;
+                }
+            });
+        
+            // If matches are found, store all highlights and highlight the first match
+            if (foundMatches) {
+                highlights = document.querySelectorAll('.highlight');
+                highlightNext(); // Automatically highlight the first match
+            } else {
+                alert('Search term not found.');
+            }
+        }
+    
+        function clearHighlights() {
+            // Query all highlighted elements within any .content block and clear them
+            document.querySelectorAll('.content .highlight').forEach(function(highlighted) {
+                // Replace the highlighted element with its innerHTML
+                var parent = highlighted.parentNode;
+                parent.replaceChild(document.createTextNode(highlighted.textContent), highlighted);
+            });
+        
+            // Clear the highlights array and reset the current highlight index
+            highlights = [];
+            highlightIndex = -1;
+        
+            // Clear the search input box
+            document.getElementById('searchInput').value = '';
+        }
+    
+        function highlightNext() {
+            if (highlights.length > 0) {
+                highlightIndex = (highlightIndex + 1) % highlights.length;
+                scrollHighlightIntoView();
+            }
+        }
+    
+        function highlightPrevious() {
+            if (highlights.length > 0) {
+                highlightIndex = (highlightIndex - 1 + highlights.length) % highlights.length;
+                scrollHighlightIntoView();
+            }
+        }
+    
+        function scrollHighlightIntoView() {
+            // Remove current highlight if any
+            document.querySelectorAll('.current-highlight').forEach(function(highlighted) {
+                highlighted.classList.remove('current-highlight');
+            });
+            // Add new highlight and scroll into view
+            highlights[highlightIndex].classList.add('current-highlight');
+            highlights[highlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+    
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+        .current-highlight {
+            background-color: orange; /* Different color for the current highlight */
+        }
+        .contact-information {
+            text-align: center;
+        }
+    </style>
+
+    <!-- 在 body 末尾添加模态框 -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- 添加必要的 JavaScript -->
+    <script>
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        var span = document.getElementsByClassName("close")[0];
+
+        function openModal(img) {
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<HTML>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='author' content='Debashis Gupta'>
+    <meta name='description' content='Homepage'>
+    <link rel="icon" href="myfigures/main/headshot.jpeg" type="image/x-icon">
+    <title>HomePage-Debashis</title>
+    <!-- Include a Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.5;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: #9E7E38;  /* Wake Forest Old Gold */
+            transition: color 0.3s;
+        }
+
+        a:hover,
+        a:active {
+            color: #7D632C;  /* 深一点的金色用于悬停效果 */
+            text-decoration: underline;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        #sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 300px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.08);
+            padding: 30px 20px;
+            box-sizing: border-box;
+            border-right: 1px solid rgba(158, 126, 56, 0.1);
+        }
+
+        #profile-picture {
+            text-align: center;
+            padding-bottom: 25px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(158, 126, 56, 0.15);
+        }
+
+        #profile-picture img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 3px solid #9E7E38;
+            transition: transform 0.3s ease;
+        }
+
+        #profile-picture img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Styling for the search bar and buttons */
+        #search-box {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #search-box input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 4px; /* Spacing between the input and the buttons */
+        }
+
+        /* Updated styles for button row to accommodate changes */
+        .button-row {
+            display: flex;
+        }
+        
+        .button-row input[type="submit"],
+        .button-row button {
+            flex-grow: 1;  /* This makes each button grow to fill the container */
+            padding: 8px;
+            margin: 0 4px; /* This sets the margin between the buttons; adjust as needed */
+            border: none;
+            border-radius: 4px;
+            background-color: #9E7E38;  /* Wake Forest Old Gold */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        /* This targets the first and last buttons to remove the margin at the ends */
+        .button-row input[type="submit"]:first-child,
+        .button-row button:first-child {
+            margin-left: 0;
+        }
+        
+        .button-row button:last-child {
+            margin-right: 0;
+        }
+        
+        #toc {
+            padding-top: 10px;
+        }
+
+        #toc strong {
+            font-size: 16px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 18px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #toc ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #toc li {
+            margin-bottom: 8px;
+        }
+
+        #toc li a {
+            padding: 12px 15px;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: #555;
+            font-size: 0.95em;
+            border-left: 3px solid transparent;
+            background-color: rgba(158, 126, 56, 0.05);
+        }
+
+        #toc li a:hover {
+            background-color: rgba(158, 126, 56, 0.15);
+            border-left-color: #9E7E38;
+            color: #9E7E38;
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(158, 126, 56, 0.2);
+        }
+
+        #toc li a:active {
+            background-color: rgba(158, 126, 56, 0.2);
+        }
+
+        .content {
+            margin-left: 300px; /* Adjusted to match other pages */
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .content-top {
+            margin-bottom: 20px;
+        }
+
+        .icon-link {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .icon-link img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .contact-info b {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        #name {
+            text-align: center;
+            font-size: 1.5em;
+            padding: 10px 0;
+        }
+
+        #name span {
+            display: block;
+        }
+
+        .teaching-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .teaching-entry {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .teaching-entry:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .teaching-entry strong {
+            display: block;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .teaching-entry a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #9E7E38;  /* Wake Forest Old Gold */
+            text-decoration: none;
+        }
+
+        .teaching-entry a:hover {
+            text-decoration: underline;
+        }
+
+        /* Enhanced Teaching Experience Styles */
+        .teaching-section {
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(158, 126, 56, 0.1);
+        }
+
+        .section-header {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid rgba(158, 126, 56, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .role-badge {
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.7em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .lecturer-badge {
+            background: linear-gradient(45deg, #9E7E38, #B8942C);
+            color: white;
+            box-shadow: 0 2px 8px rgba(158, 126, 56, 0.3);
+        }
+
+        .ta-badge {
+            background: linear-gradient(45deg, #6c757d, #5a6268);
+            color: white;
+            box-shadow: 0 2px 8px rgba(108, 117, 125, 0.3);
+        }
+
+        .position-details {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(158, 126, 56, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid #9E7E38;
+        }
+
+        .duration {
+            font-weight: 700;
+            color: #9E7E38;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .responsibilities {
+            color: #555;
+            font-style: italic;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .lecturer-courses .course-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+            border: 2px solid rgba(158, 126, 56, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lecturer-courses .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #9E7E38, #B8942C);
+        }
+
+        .ta-courses .course-card {
+            background: #ffffff;
+            border: 2px solid rgba(108, 117, 125, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ta-courses .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6c757d, #5a6268);
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .course-card strong {
+            display: block;
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .course-card p {
+            color: #666;
+            line-height: 1.5;
+            margin: 10px 0 0 0;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tech-badge.c-lang {
+            background: #A8B9CC;
+            color: #1f2937;
+        }
+
+        .tech-badge.networking {
+            background: #60A5FA;
+            color: white;
+        }
+
+        .tech-badge.math {
+            background: #F59E0B;
+            color: white;
+        }
+
+        .tech-badge.ml {
+            background: #10B981;
+            color: white;
+        }
+
+        .tech-badge.architecture {
+            background: #8B5CF6;
+            color: white;
+        }
+
+        .tech-badge.python {
+            background: #3776AB;
+            color: white;
+        }
+
+        .tech-badge.java {
+            background: #ED8B00;
+            color: white;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background: #9E7E38;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .mobile-menu-btn:hover {
+            background: #7D632C;
+        }
+
+        /* Responsive Design for Mobile */
+        @media screen and (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            #sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+                width: 280px;
+            }
+
+            #sidebar.active {
+                transform: translateX(0);
+            }
+
+            .content, .content-top {
+                margin-left: 0;
+                padding: 10px;
+                margin-top: 60px;
+            }
+
+            #profile-picture img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+            #name {
+                font-size: 1.2em;
+            }
+
+            h1, h2 {
+                font-size: 20px;
+            }
+
+            .record-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            /* Teaching Experience Mobile Styles */
+            .teaching-section {
+                padding: 20px 15px;
+                margin-bottom: 30px;
+            }
+
+            .section-header {
+                font-size: 1.2em;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .role-badge {
+                font-size: 0.6em;
+                padding: 6px 12px;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .course-card {
+                padding: 15px;
+            }
+
+            .position-details {
+                padding: 12px;
+            }
+
+            .duration {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="mobile-menu-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div id="sidebar">
+        <div id="profile-picture">
+            <img src="myfigures/main/headshot.jpeg" alt="Debashis Gupta">
+        </div>
+        <div id="name">Debashis Gupta</div>
+    
+        <!-- Contact information -->
+        <div class="contact-information">
+            <p><i>Research Assistant</i></p>
+            <p><i>Department of Computer Science</i></p>
+            <p><i>Wake Forest University</i></p>
+        </div>
+
+        <div id="toc">
+            <strong>Contents:</strong>
+            <ul>
+                <li><a href="index.html">Main Page</a></li>
+                <li><a href="publications.html">Research Publications</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+                <li><a href="academic_honors.html">Academic Service & Honors</a></li>
+                <li><a href="teach.html">Teaching Experience</a></li>
+                <li><a href="others.html">Visits and Gallery</a></li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <div class="content content-top">
+        <h2 id="teaching">TEACHING EXPERIENCE</h2>
+        
+        <!-- Lecturer Experience Section -->
+        <div class="teaching-section">
+            <h3 class="section-header lecturer-header">
+                <span class="role-badge lecturer-badge">LECTURER</span>
+                BANGLADESH ARMY UNIVERSITY OF SCIENCE & TECHNOLOGY (BAUST)
+            </h3>
+            <div class="position-details">
+                <div class="duration">November 2021 - December 2022</div>
+                <div class="responsibilities">Full-time Lecturer | Course Development & Delivery | Student Assessment</div>
+            </div>
+            
+            <div class="courses-grid lecturer-courses">
+                <div class="course-card">
+                    <strong>Programming Language C</strong>
+                    <div class="tech-badge c-lang">C Programming</div>
+                    <p>Fundamentals of C programming, data structures, and algorithm implementation</p>
+                </div>
+                
+                <div class="course-card">
+                    <strong>Computer Networks</strong>
+                    <div class="tech-badge networking">Networking</div>
+                    <p>Network protocols, TCP/IP, network security, and distributed systems</p>
+                </div>
+                
+                <div class="course-card">
+                    <strong>Mathematical Foundations in Computer Science</strong>
+                    <div class="tech-badge math">Mathematics</div>
+                    <p>Discrete mathematics, logic, graph theory, and computational complexity</p>
+                </div>
+                
+                <div class="course-card">
+                    <strong>Machine Learning</strong>
+                    <div class="tech-badge ml">ML/AI</div>
+                    <p>Supervised & unsupervised learning, algorithms, and practical applications</p>
+                </div>
+                
+                <div class="course-card">
+                    <strong>Computer Architecture</strong>
+                    <div class="tech-badge architecture">Hardware</div>
+                    <p>CPU design, memory systems, instruction sets, and performance optimization</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teaching Assistant Experience Section -->
+        <div class="teaching-section">
+            <h3 class="section-header ta-header">
+                <span class="role-badge ta-badge">TEACHING ASSISTANT</span>
+                WAKE FOREST UNIVERSITY
+            </h3>
+            <div class="position-details">
+                <div class="duration">September 2023 - May 2024</div>
+                <div class="responsibilities">Student Support | Grading | Problem-Solving Assistance</div>
+            </div>
+            
+            <div class="courses-grid ta-courses">
+                <div class="course-card">
+                    <strong>CSC 101: Problem Solving with Python</strong>
+                    <div class="tech-badge python">Python</div>
+                    <p>Assisted students with Python programming fundamentals, debugging, and project development</p>
+                </div>
+                
+                <div class="course-card">
+                    <strong>CSC 111: Introduction to Computer Science</strong>
+                    <div class="tech-badge java">Java</div>
+                    <p>Supported students in Java programming, OOP concepts, and algorithmic thinking</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="content">
+
+        <h2 id="work">Outside the University</h2>
+        <ul>
+            <li>Served as <strong>Teaching Assistant, Research Assistant, and Course Instructor</strong> at <a href="https://www.neoscholar.us/" target="_blank"><i>Neoscholar</i></a>.</li>
+        </ul>
+    </div> -->
+
+    <script>
+        // This script block will handle searching and highlighting text within the current page.
+        var highlightIndex = -1;
+        var highlights = [];
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            var searchForm = document.getElementById('searchForm');
+            if (searchForm) {
+                searchForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent the form from submitting the traditional way
+                    performSearch(); // Call the performSearch function
+                });
+            }
+        });
+    
+        function performSearch() {
+            // Clear previous highlights
+            clearHighlights();
+        
+            var searchText = document.getElementById('searchInput').value;
+            if (!searchText) {
+                return; // Exit if search box is empty
+            }
+        
+            // Select all content blocks
+            var contentBlocks = document.querySelectorAll('.content');
+        
+            // Initialize a flag to check if matches are found
+            var foundMatches = false;
+        
+            // Iterate over each content block and perform the search
+            contentBlocks.forEach(function(contentDiv) {
+                var content = contentDiv.innerHTML;
+                var searchRegEx = new RegExp(searchText, "gi");
+                var matches = content.match(searchRegEx);
+        
+                if (matches && matches.length > 0) {
+                    // Replace the found text with highlighted text
+                    contentDiv.innerHTML = content.replace(searchRegEx, '<mark class="highlight">$&</mark>');
+                    foundMatches = true;
+                }
+            });
+        
+            // If matches are found, store all highlights and highlight the first match
+            if (foundMatches) {
+                highlights = document.querySelectorAll('.highlight');
+                highlightNext(); // Automatically highlight the first match
+            } else {
+                alert('Search term not found.');
+            }
+        }
+    
+        function clearHighlights() {
+            // Query all highlighted elements within any .content block and clear them
+            document.querySelectorAll('.content .highlight').forEach(function(highlighted) {
+                // Replace the highlighted element with its innerHTML
+                var parent = highlighted.parentNode;
+                parent.replaceChild(document.createTextNode(highlighted.textContent), highlighted);
+            });
+        
+            // Clear the highlights array and reset the current highlight index
+            highlights = [];
+            highlightIndex = -1;
+        
+            // Clear the search input box
+            document.getElementById('searchInput').value = '';
+        }
+    
+        function highlightNext() {
+            if (highlights.length > 0) {
+                highlightIndex = (highlightIndex + 1) % highlights.length;
+                scrollHighlightIntoView();
+            }
+        }
+    
+        function highlightPrevious() {
+            if (highlights.length > 0) {
+                highlightIndex = (highlightIndex - 1 + highlights.length) % highlights.length;
+                scrollHighlightIntoView();
+            }
+        }
+    
+        function scrollHighlightIntoView() {
+            // Remove current highlight if any
+            document.querySelectorAll('.current-highlight').forEach(function(highlighted) {
+                highlighted.classList.remove('current-highlight');
+            });
+            // Add new highlight and scroll into view
+            highlights[highlightIndex].classList.add('current-highlight');
+            highlights[highlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+    
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+        .current-highlight {
+            background-color: orange; /* Different color for the current highlight */
+        }
+        .contact-information {
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
+    
+</body>
+</HTML>

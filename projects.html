@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='author' content='Debashis Gupta'>
+    <meta name='description' content='Projects - Debashis Gupta'>
+    <link rel="icon" href="myfigures/main/headshot.jpeg" type="image/x-icon">
+    <title>Projects - Debashis Gupta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.5;
+            background-color: #f3f4f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: #9E7E38;
+            transition: color 0.3s;
+        }
+
+        a:hover,
+        a:active {
+            color: #7D632C;
+            text-decoration: underline;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        #sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 300px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.08);
+            padding: 30px 20px;
+            box-sizing: border-box;
+            border-right: 1px solid rgba(158, 126, 56, 0.1);
+            z-index: 1000;
+        }
+
+        #profile-picture {
+            text-align: center;
+            padding-bottom: 25px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(158, 126, 56, 0.15);
+        }
+
+        #profile-picture img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 3px solid #9E7E38;
+            transition: transform 0.3s ease;
+        }
+
+        #profile-picture img:hover {
+            transform: scale(1.05);
+        }
+
+        #name {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .contact-information {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        #toc {
+            margin-top: 20px;
+        }
+
+        #toc strong {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #1a1a1a;
+        }
+
+        #toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        #toc li {
+            margin-bottom: 12px;
+        }
+
+        #toc a {
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        #toc a:hover {
+            background-color: rgba(158, 126, 56, 0.1);
+            text-decoration: none;
+            padding-left: 16px;
+        }
+
+        #content {
+            margin-left: 320px;
+            padding: 40px;
+            max-width: 1200px;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background-color: #9E7E38;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: #7D632C;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #9E7E38;
+            padding-bottom: 10px;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background-color: #fff;
+            border: 2px solid #9E7E38;
+            color: #9E7E38;
+            padding: 10px 25px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn:hover {
+            background-color: #9E7E38;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(158, 126, 56, 0.3);
+        }
+
+        .filter-btn.active {
+            background-color: #9E7E38;
+            color: white;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Project Card */
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background-color: #f0f0f0;
+        }
+
+        .project-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-category {
+            display: inline-block;
+            background-color: rgba(158, 126, 56, 0.1);
+            color: #9E7E38;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+
+        .project-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .view-details-btn {
+            color: #9E7E38;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .view-details-btn:hover {
+            color: #7D632C;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            margin: auto;
+        }
+
+        .modal-header {
+            padding: 30px;
+            border-bottom: 2px solid #f0f0f0;
+            text-align: center;
+        }
+
+        .modal-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .modal-subtitle {
+            font-size: 16px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-links {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .modal-link {
+            display: inline-block;
+            background-color: #9E7E38;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none !important;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .modal-link:hover {
+            background-color: #7D632C;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(158, 126, 56, 0.3);
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .modal-body ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .modal-body li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 32px;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            #sidebar {
+                left: -320px;
+                transition: left 0.3s ease;
+            }
+
+            #sidebar.active {
+                left: 0;
+            }
+
+            #content {
+                margin-left: 0;
+                padding: 80px 20px 20px 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .page-title {
+                font-size: 24px;
+            }
+
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 12px;
+                margin: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-menu-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div id="sidebar">
+        <div id="profile-picture">
+            <img src="myfigures/main/headshot.jpeg" alt="Debashis Gupta">
+        </div>
+        <div id="name">Debashis Gupta</div>
+    
+        <!-- Contact information -->
+        <div class="contact-information">
+            <p><i>Research Assistant</i></p>
+            <p><i>Department of Computer Science</i></p>
+            <p><i>Wake Forest University</i></p>
+        </div>
+        
+        <div id="toc">
+            <strong>Contents:</strong>
+            <ul>
+                <li><a href="index.html">Main Page</a></li>
+                <li><a href="publications.html">Research Publications</a></li>
+                <li><a href="collaborators.html">Collaborators</a></li>
+                <li><a href="academic_honors.html">Academic Service & Honors</a></li>
+                <li><a href="teach.html">Teaching Experience</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+        </div>
+        
+        <hr>
+    </div>
+
+    <div id="content">
+        <h1 class="page-title">Projects Portfolio</h1>
+        <p class="page-subtitle">
+            A collection of my development projects spanning web development, machine learning, and security research.
+            Each project represents a unique learning experience and contribution to the field.
+        </p>
+
+        <!-- Filter Buttons -->
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+            <button class="filter-btn" onclick="filterProjects('web')">Web Development</button>
+            <button class="filter-btn" onclick="filterProjects('ml')">Machine Learning</button>
+            <button class="filter-btn" onclick="filterProjects('security')">Security</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projectsGrid">
+            <!-- COVID-19 Tracker -->
+            <div class="project-card" data-category="web" onclick="openModal('covidTracker')">
+                <img src="myfigures/work/covid_tracker.jpeg" alt="COVID-19 Tracker" class="project-image" onerror="this.style.backgroundColor='#e0e0e0';">
+                <div class="project-content">
+                    <span class="project-category">Web Development</span>
+                    <h3 class="project-title">COVID-19 Tracker with Global Map Comparison</h3>
+                    <p class="project-description">
+                        An interactive web application to track COVID-19 statistics globally with country comparison features and real-time data visualization.
+                    </p>
+                    <div class="project-footer">
+                        <span class="view-details-btn">View Details →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog -->
+            <div class="project-card" data-category="web" onclick="openModal('blog')">
+                <img src="myfigures/work/blog.jpg" alt="Blog" class="project-image" onerror="this.style.backgroundColor='#e0e0e0';">
+                <div class="project-content">
+                    <span class="project-category">Web Development</span>
+                    <h3 class="project-title">Lets Learn Together - Educational Blog</h3>
+                    <p class="project-description">
+                        A personal blog platform for sharing knowledge with features including authentication, email verification, and newsletter subscription.
+                    </p>
+                    <div class="project-footer">
+                        <span class="view-details-btn">View Details →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- School Management -->
+            <div class="project-card" data-category="web" onclick="openModal('school')">
+                <img src="myfigures/work/teacher.jpg" alt="School Management" class="project-image" onerror="this.style.backgroundColor='#e0e0e0';">
+                <div class="project-content">
+                    <span class="project-category">Web Development</span>
+                    <h3 class="project-title">School Management System - BMMRI</h3>
+                    <p class="project-description">
+                        Comprehensive school management system with online admission portal, student data management, and result tracking.
+                    </p>
+                    <div class="project-footer">
+                        <span class="view-details-btn">View Details →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-commerce -->
+            <div class="project-card" data-category="web" onclick="openModal('ecommerce')">
+                <img src="myfigures/work/ecomerce.jpg" alt="E-commerce" class="project-image" onerror="this.style.backgroundColor='#e0e0e0';">
+                <div class="project-content">
+                    <span class="project-category">Web Development</span>
+                    <h3 class="project-title">Mina.com - E-commerce Website</h3>
+                    <p class="project-description">
+                        My first web development project - an e-commerce template built with HTML, CSS, and vanilla JavaScript featuring image sliders and galleries.
+                    </p>
+                    <div class="project-footer">
+                        <span class="view-details-btn">View Details →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COVID-19 Classification -->
+            <div class="project-card" data-category="ml" onclick="openModal('covidML')">
+                <img src="myfigures/work/covid.jpg" alt="COVID-19 Classification" class="project-image" onerror="this.style.backgroundColor='#e0e0e0';">
+                <div class="project-content">
+                    <span class="project-category">Machine Learning</span>
+                    <h3 class="project-title">COVID-19 Classification with Pretrained Models</h3>
+                    <p class="project-description">
+                        Comparison study of different pretrained models (VGG16, InceptionV3, ResNet, DenseNet) for detecting COVID-19 from chest X-ray images.
+                    </p>
+                    <div class="project-footer">
+                        <span class="view-details-btn">View Details →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chest X-ray -->
+            <div class="project-card" data-category="ml" onclick="openModal('chest')">
+                <img src="myfigures/work/chest.jpg" alt="Chest X-ray" class="project-image" onerror="this.style.backgroundColor='#e0e0e0';">
+                <div class="project-content">
+                    <span class="project-category">Machine Learning</span>
+                    <h3 class="project-title">Pneumonia Detection from Chest X-ray Images</h3>
+                    <p class="project-description">
+                        Binary classification model using customized VGG16 architecture to detect pneumonia from chest X-ray images with 96% accuracy.
+                    </p>
+                    <div class="project-footer">
+                        <span class="view-details-btn">View Details →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Credit Card Fraud -->
+            <div class="project-card" data-category="ml" onclick="openModal('creditCard')">
+                <img src="myfigures/work/card.jpg" alt="Credit Card Fraud" class="project-image" onerror="this.style.backgroundColor='#e0e0e0';">
+                <div class="project-content">
+                    <span class="project-category">Machine Learning</span>
+                    <h3 class="project-title">Credit Card Fraud Detection</h3>
+                    <p class="project-description">
+                        Fraud detection system using multiple algorithms including IsolationForest, RandomForest, and Artificial Neural Networks for transaction classification.
+                    </p>
+                    <div class="project-footer">
+                        <span class="view-details-btn">View Details →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DoS Attack -->
+            <div class="project-card" data-category="security" onclick="openModal('dos')">
+                <img src="myfigures/work/dos.jpg" alt="DoS Attack" class="project-image" onerror="this.style.backgroundColor='#e0e0e0';">
+                <div class="project-content">
+                    <span class="project-category">Security Research</span>
+                    <h3 class="project-title">Denial of Service (DoS) Attack</h3>
+                    <p class="project-description">
+                        Educational implementation of DoS attack using Python to understand network security threats and defense mechanisms.
+                    </p>
+                    <div class="project-footer">
+                        <span class="view-details-btn">View Details →</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keylogger -->
+            <div class="project-card" data-category="security" onclick="openModal('keylogger')">
+                <img src="myfigures/work/keylogger.jpg" alt="Keylogger" class="project-image" onerror="this.style.backgroundColor='#e0e0e0';">
+                <div class="project-content">
+                    <span class="project-category">Security Research</span>
+                    <h3 class="project-title">Keylogger Attack Implementation</h3>
+                    <p class="project-description">
+                        Python-based keylogger for educational purposes to understand keystroke monitoring and security vulnerabilities.
+                    </p>
+                    <div class="project-footer">
+                        <span class="view-details-btn">View Details →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- COVID Tracker Modal -->
+    <div class="modal-overlay" id="covidTracker">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('covidTracker')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">COVID-19 Tracker</h2>
+                <p class="modal-subtitle">United We Can Face A Great Disaster With A Little Smile</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-links">
+                    <a href="https://github.com/Debashis-Gupta/debashis-covid-19" target="_blank" class="modal-link">View on GitHub</a>
+                </div>
+                <p>
+                    Covid-19 is the most fatal disease in 21<sup>st</sup> century and is declared as <strong>Global pandemic by WHO</strong>. 
+                    The only cure of this deadly disease is to maintain social distance and keeping hygenic environment.
+                </p>
+                <p>
+                    I made this web app to track the covid-19 disease affected on globally. Here I use Javascript to call API and processed the 
+                    data with fetch method. Here I introduced <strong>some key features</strong> described briefly following.
+                </p>
+                <ul>
+                    <li><strong>Automatic detect one's country and show the result</strong>. You can change it by clicking the change button.</li>
+                    <li>You can see the <strong>global map</strong> which states have been how much affected with statistics.</li>
+                    <li>You can make <strong>comparison between any two countries</strong> and see the comparison statistics with chart.</li>
+                    <li><strong>Statistical View</strong></li>
+                    <li>Friendly <strong>User Interface</strong> (UI)</li>
+                </ul>
+                <p>Here I act as <strong>Project Planner</strong> and want to <strong>contribute to the society.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Modal -->
+    <div class="modal-overlay" id="blog">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('blog')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Lets Learn Together</h2>
+                <p class="modal-subtitle">A Blog For Spreading Knowledge</p>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Lets Learn Together is my personal blog where I try to share my knowledge and experience to avid learners who want to do 
+                    something by themselves. As I'm very much keen to know new technology and techniques I think about this blog to make usable for all.
+                </p>
+                <p>As it can be already identified I am <strong>the owner and do all the stuffs by myself</strong>. I like to reveal some <strong>key features</strong> of the blog:</p>
+                <ul>
+                    <li>To make comment <strong>login</strong> must be needed</li>
+                    <li><strong>Email Verification</strong></li>
+                    <li>Users Can <strong>Subscribe to NewsLetter</strong> to notify to the new posts</li>
+                    <li>Have all users details <strong>secured and structured way</strong></li>
+                    <li><strong>Category</strong> to all posts</li>
+                </ul>
+                <p>Here I act as <strong>Blogger, DBA and Planner</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- School Management Modal -->
+    <div class="modal-overlay" id="school">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('school')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">BMMRI School Management</h2>
+                <p class="modal-subtitle">Pursue Knowledge & Serve Mankind</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-links">
+                    <a href="https://github.com/Debashis-Gupta/school_management" target="_blank" class="modal-link">View on GitHub</a>
+                </div>
+                <p>Currently I am working on this project for a school. I like to reveal some of its features like:</p>
+                <ul>
+                    <li>Online Admission Portal</li>
+                    <li>Managing Each Student Individual Data and Result</li>
+                    <li>Building Front-end Design for the school</li>
+                </ul>
+                <p>Here I work as <strong>Team Leader, Planner and Database Designer</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- E-commerce Modal -->
+    <div class="modal-overlay" id="ecommerce">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('ecommerce')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Mina.com - E-commerce Website</h2>
+                <p class="modal-subtitle">Online Platform Brings To Life More Ease</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-links">
+                    <a href="https://github.com/Debashis-Gupta/Debashis-Gupta.github.io" target="_blank" class="modal-link">View on GitHub</a>
+                    <a href="https://debashis-gupta.github.io/" target="_blank" class="modal-link">View Live Demo</a>
+                </div>
+                <p>
+                    This is an ecommerce template which I built on my <strong>first semester</strong>. It was my first project as a 
+                    front-end designer in my career. Here I use <strong>only HTML, CSS and Javascript.</strong>
+                </p>
+                <p>I like to point out some <strong>features</strong> of this project:</p>
+                <ul>
+                    <li>Provided <strong>Image Slider using Javascript</strong></li>
+                    <li><strong>Gallery View</strong></li>
+                    <li><strong>Custom Advertisement</strong></li>
+                </ul>
+                <p>
+                    I keep this project as it is <strong>without any improvement</strong> because I like to 
+                    <strong>see my beginning over and over again</strong>. I hope you like the <strong>demo</strong> and 
+                    <strong>see it as a new-bie web developer</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COVID ML Modal -->
+    <div class="modal-overlay" id="covidML">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('covidML')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Classifying COVID-19</h2>
+                <p class="modal-subtitle">Machine Can Enlarge A Doctor's Ability</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-links">
+                    <a href="https://github.com/Debashis-Gupta/Debashis-Gupta-COMPARISION-ON-CLASSIFING-COVID-19-OF-DIFFERENT-PRETRAINED-MODELS/blob/master/identify-covid-19-with-inceptionv3-and-vgg16.ipynb" target="_blank" class="modal-link">View on GitHub</a>
+                </div>
+                <p>
+                    It's a <strong>binary classification model</strong> defining whether the given chest x-ray image is normal or affected by 
+                    <strong>Covid-19</strong>. Here I show different types of pretrained model like VGG16, InceptionV3, ResNet, DenseNet.
+                </p>
+                <p>Some <strong>key points</strong> of this model are:</p>
+                <ul>
+                    <li><strong>Can compare the stability among these models</strong></li>
+                    <li><strong>Dataset Analysis</strong></li>
+                    <li><strong>Provide Customization</strong> to these models</li>
+                </ul>
+                <p>
+                    Here I learn dealing with <strong>less dataset and inner-differ architectural behaviour of different models</strong>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chest X-ray Modal -->
+    <div class="modal-overlay" id="chest">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('chest')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Classifying Chest X-ray Images</h2>
+                <p class="modal-subtitle">Machine Can Enlarge A Doctor's Ability</p>
+            </div>
+            <div class="modal-body">
+                <p>
+                    It's a <strong>binary classification model</strong> defining whether the given chest x-ray image is normal or affected by 
+                    <strong>Pneumonia</strong>. I use a pretrained model to train up the whole image dataset.
+                </p>
+                <p>Some <strong>key points</strong> of this model are:</p>
+                <ul>
+                    <li><strong>Got accuracy - 96%</strong></li>
+                    <li><strong>Data Augmentation - Image generator</strong></li>
+                    <li><strong>Provide Customization</strong> VGG16 model</li>
+                    <li><strong>Normalization</strong></li>
+                </ul>
+                <p>
+                    Here I learn dealing with <strong>less dataset and image augmentation</strong>. Besides 
+                    how to <strong>customly define a pretrained model</strong>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credit Card Modal -->
+    <div class="modal-overlay" id="creditCard">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('creditCard')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Credit Card Fraud Detection</h2>
+                <p class="modal-subtitle">Technology Can Be Curse When It Is Being Abused</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-links">
+                    <a href="https://github.com/Debashis-Gupta/-Credit_card_fraud_detection" target="_blank" class="modal-link">View on GitHub</a>
+                </div>
+                <p>
+                    It is important that credit card companies are able to recognize fraudulent credit card transactions so that customers are 
+                    not charged for items that they did not purchase. So I tried on credit card fraud detection dataset from Kaggle to detect the 
+                    fraud cases. It is basically a categorical implementation to detect <strong>normal and fraud transactions.</strong>
+                </p>
+                <p>
+                    Here I implemented three algorithms <strong>IsolationForest, LocalOutlierFactor, RandomForest and Artificial Neural Network (ANN).</strong> 
+                    The highlighted remarks of this project is:
+                </p>
+                <ul>
+                    <li><strong>Comparison</strong> between static algorithms and neural network architectural algorithms</li>
+                    <li><strong>ANN performs better than IsolationForest and RandomForest</strong></li>
+                    <li><strong>Dataset Analysis</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- DoS Attack Modal -->
+    <div class="modal-overlay" id="dos">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('dos')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Denial Of Service Attack</h2>
+                <p class="modal-subtitle">It's the man who can make use or abuse of internet</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-links">
+                    <a href="https://github.com/Debashis-Gupta/NetWork_Security_Attack/tree/master/DOS%20attack" target="_blank" class="modal-link">View on GitHub</a>
+                </div>
+                <p>
+                    As I am very much curious to learn and aware of network threats and security, so I like coding new stuffs gaining knowledge from 
+                    different sources. I made this attack using Python version 3.7.
+                </p>
+                <p>The key points I like to share of my project are:</p>
+                <ul>
+                    <li>Custom input to the target server IP</li>
+                    <li>Customize the sending packets and timings</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keylogger Modal -->
+    <div class="modal-overlay" id="keylogger">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('keylogger')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Keylogger Attack</h2>
+                <p class="modal-subtitle">Understanding Security Vulnerabilities</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-links">
+                    <a href="https://github.com/Debashis-Gupta/NetWork_Security_Attack/tree/master/KeyLogger%20Attack" target="_blank" class="modal-link">View on GitHub</a>
+                </div>
+                <p>
+                    A keylogger, sometimes called a keystroke logger or system monitor, is a type of surveillance technology used to monitor and record 
+                    each keystroke typed on a specific computer's keyboard. Intruders use keyloggers to steal <strong>personal information</strong> 
+                    which they can then sell or use for own profit.
+                </p>
+                <p>I made this keylogger attack using Python script. After running it, any keystroke can be traced by the script automatically. 
+                    The key features of it:</p>
+                <ul>
+                    <li><strong>All keystrokes are traced and note down on a text file</strong></li>
+                    <li><strong>This keylogger works behind the any app automatically</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Sidebar for Mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+
+        // Filter Projects
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.classList.remove('hidden');
+                } else {
+                    if (card.dataset.category === category) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        // Open Modal
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(this.id);
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    closeModal(modal.id);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
